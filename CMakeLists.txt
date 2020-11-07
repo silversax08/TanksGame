@@ -1,5 +1,6 @@
+
 cmake_minimum_required(VERSION 3.4)
-project(Ball_Fountain)
+project(Tanks)
 
 FIND_PACKAGE(Qt5Widgets)
 FIND_PACKAGE(Qt5Gui)
@@ -16,11 +17,11 @@ SET(CMAKE_AUTOMOC ON)
 SET(CMAKE_AUTOUIC ON)
 SET(CMAKE_AUTORCC ON)
 
-add_library(BallMotion STATIC
-    UpdateBallPhysics.hpp
-    UpdateBallPhysics.cpp
-    BallPhysicsEquations.h
-    BallPhysicsEquations.cpp
+add_library(ProjectileMotion STATIC
+    ProjectileMotion.hpp
+    ProjectileMotion.cpp
+    ProjectileMotionEquations.hpp
+    ProjectileMotionEquations.cpp
   )
 
 add_executable(${PROJECT_NAME}
@@ -28,14 +29,6 @@ add_executable(${PROJECT_NAME}
     mainwindow.cpp
     mainwindow.h
     mainwindowform.ui
-    OSGWidget.h
-    OSGWidget.cpp
-    sphereupdatecallback.h
-    sphereupdatecallback.cpp
-    physicsWorld.hpp
-    physicsWorld.cpp
-    Ball.h
-    Ball.cpp
 )
 target_link_libraries(${PROJECT_NAME}
     ${OPENSCENEGRAPH_LIBRARIES}
@@ -43,21 +36,15 @@ target_link_libraries(${PROJECT_NAME}
     Qt5::Gui
     ${GTEST_LIBRARIES}
     ${GTEST_MAIN_LIBRARIES}
-    BallMotion
 )
 
-
 add_executable(Unit_Tests
-    calculate_new_acceleration.cpp
     calculate_new_velocity.cpp
     calculate_new_position.cpp
-    get_position.cpp
-    set_initial_velocity.cpp
     )
 
 target_link_libraries(Unit_Tests
     ${GTEST_LIBRARIES}
     ${GTEST_MAIN_LIBRARIES}
-    BallMotion
+    ProjectileMotion
 )
-
