@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindowform.h"
 
+#include <QGraphicsRectItem>
+#include <QGraphicsView>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow{parent},
     mMainWindowUI{new Ui::MainWindowForm}
@@ -20,6 +23,15 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_LaunchButton_clicked()
 {
+    QGraphicsScene* scene = new QGraphicsScene;
+    QGraphicsRectItem* rect = new QGraphicsRectItem;
+    rect->setRect(0,0,100,100);
+    scene->addItem(rect);
+//    QGraphicsView* view = new QGraphicsView(scene);
+//    view->show();
+//    mMainWindowUI->graphicsView->scene();
+    mMainWindowUI->graphicsView->setScene(scene);
+//    mMainWindowUI->graphicsView->show();
 //    mMainWindowUI->OSGOutput->sphere_setup(velocity, angle);
 }
 

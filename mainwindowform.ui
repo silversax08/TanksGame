@@ -64,7 +64,7 @@
      </widget>
     </item>
     <item row="1" column="0" colspan="3">
-     <widget class="QWidget" name="OSGOutput" native="true"/>
+     <widget class="QGraphicsView" name="graphicsView"/>
     </item>
    </layout>
   </widget>
