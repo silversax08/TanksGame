@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtCore>
+#include "Tank.h"
 
 namespace Ui {
 class MainWindowForm;
@@ -14,6 +15,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void key_press_event(QKeyEvent* event);
 public slots:
     void on_actionExit_triggered();
 private slots:
@@ -22,10 +24,15 @@ private slots:
     void on_AngleSlider_sliderMoved(int position);
     void on_VelocitySlider_valueChanged(int value);
     void on_AngleSlider_valueChanged(int value);
+    void on_leftButton_clicked();
+
+    void on_rightButton_clicked();
+
 private:
     Ui::MainWindowForm *mMainWindowUI;
     int velocity{7};
     int angle{0};
+    Tank* tank{new Tank};
 };
 
 #endif // MAINWINDOW_H
