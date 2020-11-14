@@ -12,13 +12,16 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     mMainWindowUI->setupUi(this);
     tank->setRect(-10,0,100,100);
+    tank2->setRect(-10,0,100,100);
     scene->addItem(tank);
+    scene->addItem(tank2);
     mMainWindowUI->graphicsView->setScene(scene);
 //    mMainWindowUI->graphicsView->setFixedSize(750,650);
     scene->setSceneRect(0,0,550,525);
 //    tank->setFlag(QGraphicsItem::ItemIsFocusable);
 //    tank->setFocus();
-    mMainWindowUI->graphicsView->setFocusPolicy( Qt::StrongFocus );
+//    mMainWindowUI->graphicsView->setFocusPolicy( Qt::StrongFocus );
+    this->setFocusPolicy( Qt::StrongFocus );
 }
 
 MainWindow::~MainWindow()
@@ -26,12 +29,26 @@ MainWindow::~MainWindow()
     delete mMainWindowUI;
 }
 
-void MainWindow::key_press_event(QKeyEvent *event)
+void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    qDebug() << "Key Pushed";
-    if (event->key() == Qt::Key_Left)
-        tank->setPos(x()-10,y());
+    QString keyString   = event->text();
+
+    if( event->key() == Qt::Key_Left )
+    {
+        tank->move_tank_left();
+        return;
+    }
+    else if(event->key() == Qt::Key_Right)
+    {
+        tank->move_tank_right();
+        return;
+    }
+//    qDebug() << "Key Pushed 1";
+//    if (event->key() == Qt::Key_Left)
+//        tank->setPos(x()-10,y());
 }
+
+
 
 void MainWindow::on_actionExit_triggered()
 {

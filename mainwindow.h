@@ -16,7 +16,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void key_press_event(QKeyEvent* event);
+    virtual void keyPressEvent( QKeyEvent* event );
 public slots:
     void on_actionExit_triggered();
 private slots:
@@ -35,6 +35,7 @@ private:
     int angle{0};
     QGraphicsScene* scene{new QGraphicsScene};
     Tank* tank{new Tank};
+    Tank* tank2{new Tank(240,200)};
 };
 
 #endif // MAINWINDOW_H

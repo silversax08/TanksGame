@@ -9,6 +9,13 @@ Tank::Tank()
     setPos(xPos,yPos);
 }
 
+Tank::Tank(int newXPos, int newYPos)
+{
+    QGraphicsRectItem* rect = new QGraphicsRectItem;
+    rect->setRect(xPos,yPos,100,100);
+    setPos(newXPos,newYPos);
+}
+
 void Tank::key_press_event(QKeyEvent* event)
 {
     qDebug() << "Key Pushed";
