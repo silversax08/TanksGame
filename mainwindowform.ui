@@ -29,7 +29,17 @@
      </spacer>
     </item>
     <item row="0" column="3" rowspan="11">
-     <widget class="QGraphicsView" name="graphicsView"/>
+     <widget class="QGraphicsView" name="graphicsView">
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
     </item>
     <item row="2" column="0">
      <widget class="QLabel" name="label">
@@ -40,6 +50,9 @@
     </item>
     <item row="3" column="0" colspan="3">
      <widget class="QSlider" name="VelocitySlider">
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="minimum">
        <number>7</number>
       </property>
@@ -82,6 +95,9 @@
     </item>
     <item row="6" column="0" colspan="3">
      <widget class="QSlider" name="AngleSlider">
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="minimum">
        <number>-90</number>
       </property>
@@ -121,6 +137,9 @@
     </item>
     <item row="9" column="0" colspan="2">
      <widget class="QPushButton" name="leftButton">
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="text">
        <string>&lt;</string>
       </property>
@@ -128,6 +147,9 @@
     </item>
     <item row="9" column="2">
      <widget class="QPushButton" name="rightButton">
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="text">
        <string>&gt;</string>
       </property>
@@ -148,6 +170,9 @@
     </item>
     <item row="1" column="0" colspan="3">
      <widget class="QPushButton" name="LaunchButton">
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
       <property name="text">
        <string>Launch!</string>
       </property>

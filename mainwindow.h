@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QGraphicsScene>
 #include <QtCore>
 #include "Tank.h"
 
@@ -32,6 +33,7 @@ private:
     Ui::MainWindowForm *mMainWindowUI;
     int velocity{7};
     int angle{0};
+    QGraphicsScene* scene{new QGraphicsScene};
     Tank* tank{new Tank};
 };
 

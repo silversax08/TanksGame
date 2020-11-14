@@ -31,6 +31,8 @@ add_executable(${PROJECT_NAME}
     mainwindowform.ui
     Tank.h
     Tank.cpp
+    Bullet.h
+    Bullet.cpp
 )
 target_link_libraries(${PROJECT_NAME}
     ${OPENSCENEGRAPH_LIBRARIES}
