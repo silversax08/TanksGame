@@ -49,6 +49,7 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_LaunchButton_clicked()
 {
+    std::array<int,2> position{250,250};
     Bullet* bullet{new Bullet()};
     bullet->setRect(-10,0,10,50);
     tank->scene()->addItem(bullet);
