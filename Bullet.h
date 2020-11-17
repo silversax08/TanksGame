@@ -11,7 +11,7 @@ class Bullet : public QObject,public QGraphicsRectItem
 {
         Q_OBJECT
 public:
-    Bullet(std::array<int,2> inputPosition);
+    Bullet(std::array<int,2> inputPosition, int inputVelocity, int inputAngle);
     ProjectileMotion* physics;
 private:
     int velocity{0};

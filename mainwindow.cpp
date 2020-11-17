@@ -40,8 +40,6 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     }
 }
 
-
-
 void MainWindow::on_actionExit_triggered()
 {
     QApplication::quit();
@@ -49,7 +47,7 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_LaunchButton_clicked()
 {
-    Bullet* bullet{new Bullet(tank->get_position())};
+    Bullet* bullet{new Bullet(tank->get_position(),velocity,angle)};
     bullet->setRect(-10,0,10,10);
     tank->scene()->addItem(bullet);
     qDebug() << "Key Pushed";
