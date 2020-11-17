@@ -68,6 +68,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             tank->scene()->addItem(bullet);
             playerNumber = 1;
         }
+
         mMainWindowUI->VelocitySlider->setSliderPosition(10);
         mMainWindowUI->AngleSlider->setSliderPosition(0);
     }

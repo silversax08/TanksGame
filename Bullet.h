@@ -12,8 +12,9 @@ class Bullet : public QObject,public QGraphicsRectItem
         Q_OBJECT
 public:
     Bullet(std::array<int,2> inputPosition, int inputVelocity, int inputAngle);
-    ProjectileMotion* physics;
+    double get_vertical_position();
 private:
+    ProjectileMotion* physics;
     int velocity{0};
     int angle{0};
     int deltaT{50};

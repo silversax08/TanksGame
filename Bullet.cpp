@@ -1,6 +1,9 @@
 #include "Bullet.h"
 #include <QTimer>
 #include "ProjectileMotion.hpp"
+#include <QList>
+#include "Tank.h"
+#include <QGraphicsScene>
 
 
 Bullet::Bullet(std::array<int,2> inputPosition, int inputVelocity, int inputAngle)
@@ -21,8 +24,27 @@ Bullet::Bullet(std::array<int,2> inputPosition, int inputVelocity, int inputAngl
     timer->start(deltaT);
 }
 
+double Bullet::get_vertical_position()
+{
+    return position[1];
+}
+
 void Bullet::move()
 {
-    std::array<double,2> tempPosition{physics->get_position()};
-    setPos(tempPosition[0],tempPosition[1]);
+    position = physics->get_position();
+
+    QList<QGraphicsItem*> collisions{collidingItems()};
+    for(int i = 0, n = collisions.size(); i < n; ++i)
+    {
+        if(typeid(*(collisions[i])) == typeid(Tank))
+        {
+            scene()->removeItem(collisions[i]);
+            scene()->removeItem(this);
+            delete collisions[i];
+            delete this;
+            return;
+        }
+    }
+
+    setPos(position[0],position[1]);
 }
