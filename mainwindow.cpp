@@ -30,19 +30,46 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
     if( event->key() == Qt::Key_Left )
     {
-        tank->move_tank_left();
+        if(playerNumber == 1)
+        {
+            tank->move_tank_left();
+        }
+        else if(playerNumber == 2)
+        {
+             tank2->move_tank_left();
+        }
         return;
     }
     else if(event->key() == Qt::Key_Right)
     {
-        tank->move_tank_right();
+        if(playerNumber == 1)
+        {
+            tank->move_tank_right();
+        }
+        else if(playerNumber == 2)
+        {
+             tank2->move_tank_right();
+        }
         return;
     }
     else if(event->key() == Qt::Key_Space)
     {
-        Bullet* bullet{new Bullet(tank->get_position(),velocity,angle)};
-        bullet->setRect(-10,0,5,5);
-        tank->scene()->addItem(bullet);
+        if(playerNumber == 1)
+        {
+            Bullet* bullet{new Bullet(tank->get_position(),velocity,angle)};
+            bullet->setRect(-10,0,5,5);
+            tank->scene()->addItem(bullet);
+            playerNumber = 2;
+        }
+        else if(playerNumber == 2)
+        {
+            Bullet* bullet{new Bullet(tank2->get_position(),velocity,angle)};
+            bullet->setRect(-10,0,5,5);
+            tank->scene()->addItem(bullet);
+            playerNumber = 1;
+        }
+        mMainWindowUI->VelocitySlider->setSliderPosition(10);
+        mMainWindowUI->AngleSlider->setSliderPosition(0);
     }
     else if(event->key() == Qt::Key_1)
     {
@@ -69,9 +96,18 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_LaunchButton_clicked()
 {
-    Bullet* bullet{new Bullet(tank->get_position(),velocity,angle)};
-    bullet->setRect(-10,0,5,5);
-    tank->scene()->addItem(bullet);
+    if(playerNumber == 1)
+    {
+        Bullet* bullet{new Bullet(tank->get_position(),velocity,angle)};
+        bullet->setRect(-10,0,5,5);
+        tank->scene()->addItem(bullet);
+    }
+    else if(playerNumber == 2)
+    {
+        Bullet* bullet{new Bullet(tank2->get_position(),velocity,angle)};
+        bullet->setRect(-10,0,5,5);
+        tank->scene()->addItem(bullet);
+    }
 }
 
 void MainWindow::on_VelocitySlider_sliderMoved(int position)
@@ -96,10 +132,24 @@ void MainWindow::on_AngleSlider_valueChanged(int value)
 
 void MainWindow::on_leftButton_clicked()
 {
-    tank->move_tank_left();
+    if(playerNumber == 1)
+    {
+        tank->move_tank_left();
+    }
+    else if(playerNumber == 2)
+    {
+         tank2->move_tank_left();
+    }
 }
 
 void MainWindow::on_rightButton_clicked()
 {
-    tank->move_tank_right();
+    if(playerNumber == 1)
+    {
+        tank->move_tank_right();
+    }
+    else if(playerNumber == 2)
+    {
+         tank2->move_tank_right();
+    }
 }

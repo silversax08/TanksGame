@@ -34,6 +34,7 @@ private:
     Ui::MainWindowForm *mMainWindowUI;
     int velocity{10};
     int angle{0};
+    int playerNumber{1};
     std::array<int,2> tank1Position{50,350};
     std::array<int,2> tank2Position{450,350};
     QGraphicsScene* scene{new QGraphicsScene};
