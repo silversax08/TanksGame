@@ -38,6 +38,12 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         tank->move_tank_right();
         return;
     }
+    else if(event->key() == Qt::Key_Space)
+    {
+        Bullet* bullet{new Bullet(tank->get_position(),velocity,angle)};
+        bullet->setRect(-10,0,10,10);
+        tank->scene()->addItem(bullet);
+    }
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -50,7 +56,6 @@ void MainWindow::on_LaunchButton_clicked()
     Bullet* bullet{new Bullet(tank->get_position(),velocity,angle)};
     bullet->setRect(-10,0,10,10);
     tank->scene()->addItem(bullet);
-    qDebug() << "Key Pushed";
 }
 
 void MainWindow::on_VelocitySlider_sliderMoved(int position)
