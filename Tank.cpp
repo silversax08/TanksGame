@@ -10,11 +10,15 @@ Tank::Tank()
     setPos(xPos,yPos);
 }
 
-Tank::Tank(int newXPos, int newYPos)
+Tank::Tank(int inputXPos, int inputYPos)
 {
     QGraphicsRectItem* rect = new QGraphicsRectItem;
+//    rect->setRect(xPos,yPos,100,100);
+//    setPos(xPos,yPos);
+    xPos = inputXPos;
+    yPos = inputYPos;
     rect->setRect(xPos,yPos,100,100);
-    setPos(newXPos,newYPos);
+    setPos(xPos,yPos);
 }
 
 std::array<int,2> Tank::get_position()

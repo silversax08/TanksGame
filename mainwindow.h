@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QtCore>
+#include <array>
 #include "Tank.h"
 
 namespace Ui {
@@ -33,9 +34,11 @@ private:
     Ui::MainWindowForm *mMainWindowUI;
     int velocity{10};
     int angle{0};
+    std::array<int,2> tank1Position{50,250};
+    std::array<int,2> tank2Position{450,250};
     QGraphicsScene* scene{new QGraphicsScene};
-    Tank* tank{new Tank};
-    Tank* tank2{new Tank(240,200)};
+    Tank* tank{new Tank(tank1Position[0],tank1Position[1])};
+    Tank* tank2{new Tank(tank2Position[0],tank2Position[1])};
 };
 
 #endif // MAINWINDOW_H

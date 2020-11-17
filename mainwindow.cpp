@@ -11,10 +11,10 @@ MainWindow::MainWindow(QWidget *parent) :
     mMainWindowUI{new Ui::MainWindowForm}
 {
     mMainWindowUI->setupUi(this);
-    tank->setRect(-10,0,100,100);
-//    tank2->setRect(-10,0,100,100);
+    tank->setRect(0,0,50,50);
+    tank2->setRect(0,0,50,50);
     scene->addItem(tank);
-//    scene->addItem(tank2);
+    scene->addItem(tank2);
     mMainWindowUI->graphicsView->setScene(scene);
     scene->setSceneRect(0,0,550,525);
 }
