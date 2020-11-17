@@ -40,6 +40,7 @@ target_link_libraries(${PROJECT_NAME}
     Qt5::Gui
     ${GTEST_LIBRARIES}
     ${GTEST_MAIN_LIBRARIES}
+    ProjectileMotion
 )
 
 add_executable(Unit_Tests

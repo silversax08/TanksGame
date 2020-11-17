@@ -4,12 +4,25 @@ std::array<double,2> utility::calculate_new_velocity(std::array<double,2> oldVel
 {
     std::array<double,2> newVelocity;
 
-    for (size_t i{0}; i < newVelocity.size(); i++)
-    {
-        newVelocity[i] = oldVelocity[i]+newAcceleration[i]*deltaT;
-    }
+//    for (size_t i{0}; i < newVelocity.size(); i++)
+//    {
+        newVelocity[0] = oldVelocity[0]+newAcceleration[0]*deltaT;
+        newVelocity[1] = oldVelocity[1]-newAcceleration[1]*deltaT;
+//    }
 
     return newVelocity;
+}
+
+std::array<double, 2> utility::calculate_new_position(std::array<double, 2> oldPosition, std::array<double, 2> newVelocity, double deltaT)
+{
+    std::array<double,2> newPosition;
+
+    for (size_t i{0}; i < newPosition.size(); i++)
+    {
+        newPosition[i] = oldPosition[i]+newVelocity[i]*deltaT;
+    }
+
+    return newPosition;
 }
 
 std::array<double,2> utility::calculate_vector_velocity(int inputVelocity, int inputAngle)
@@ -20,13 +33,13 @@ std::array<double,2> utility::calculate_vector_velocity(int inputVelocity, int i
     {
         double angle{(90-inputAngle)*3.14/180};
         velocity[0] = inputVelocity*cos(angle);
-        velocity[1] = inputVelocity*sin(angle);
+        velocity[1] = -inputVelocity*sin(angle);
     }
     else
     {
         double angle{(90+inputAngle)*3.14/180};
         velocity[0] = -inputVelocity*cos(-angle);
-        velocity[1] = -inputVelocity*sin(-angle);
+        velocity[1] = inputVelocity*sin(-angle);
     }
 
     return velocity;

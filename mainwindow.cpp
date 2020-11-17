@@ -49,9 +49,8 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_LaunchButton_clicked()
 {
-    std::array<int,2> position{250,250};
-    Bullet* bullet{new Bullet()};
-    bullet->setRect(-10,0,10,50);
+    Bullet* bullet{new Bullet(tank->get_position())};
+    bullet->setRect(-10,0,10,10);
     tank->scene()->addItem(bullet);
     qDebug() << "Key Pushed";
 }

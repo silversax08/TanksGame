@@ -1,6 +1,7 @@
 #include "Tank.h"
 #include <QKeyEvent>
 #include <QDebug>
+#include <array>
 
 Tank::Tank()
 {
@@ -16,11 +17,9 @@ Tank::Tank(int newXPos, int newYPos)
     setPos(newXPos,newYPos);
 }
 
-void Tank::key_press_event(QKeyEvent* event)
+std::array<int,2> Tank::get_position()
 {
-    qDebug() << "Key Pushed";
-    if (event->key() == Qt::Key_Left)
-        setPos(x()-10,y());
+    return{xPos,yPos};
 }
 
 void Tank::move_tank_left()

@@ -1,12 +1,11 @@
 #include "ProjectileMotion.hpp"
 #include "ProjectileMotionEquations.hpp"
 
-ProjectileMotion::ProjectileMotion()
+ProjectileMotion::ProjectileMotion(int inputVelocity,int inputAngle,std::array<double,2>inputPosition)
 {
-    position[0] = 255;
-    position[1] = 255;
-    velocity = utility::calculate_vector_velocity(10,45);
-    deltaT = 50;
+    position[0] = inputPosition[0];
+    position[1] = inputPosition[1];
+    velocity = utility::calculate_vector_velocity(inputVelocity,inputAngle);
 }
 
 std::array<double,2> ProjectileMotion::get_position()
@@ -15,3 +14,4 @@ std::array<double,2> ProjectileMotion::get_position()
     position = utility::calculate_new_position(position,velocity,deltaT);
     return position;
 }
+

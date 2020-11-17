@@ -11,13 +11,13 @@ class Bullet : public QObject,public QGraphicsRectItem
 {
         Q_OBJECT
 public:
-    Bullet();
-    ProjectileMotion* physics{new ProjectileMotion()};
+    Bullet(std::array<int,2> inputPosition);
+    ProjectileMotion* physics;
 private:
     int velocity{0};
     int angle{0};
     int deltaT{50};
-    std::array<int,2> position{250,212};
+    std::array<double,2> position;
 private slots:
     void move();
 };

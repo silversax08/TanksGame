@@ -9,7 +9,7 @@ class Tank : public QGraphicsRectItem
 public:
     Tank();
     Tank(int newXPos, int newYPos);
-    void key_press_event(QKeyEvent* event);
+    std::array<int,2> get_position();
     void move_tank_left();
     void move_tank_right();
 private:
