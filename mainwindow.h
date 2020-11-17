@@ -31,7 +31,7 @@ private slots:
 
 private:
     Ui::MainWindowForm *mMainWindowUI;
-    int velocity{7};
+    int velocity{10};
     int angle{0};
     QGraphicsScene* scene{new QGraphicsScene};
     Tank* tank{new Tank};

@@ -44,6 +44,22 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
         bullet->setRect(-10,0,10,10);
         tank->scene()->addItem(bullet);
     }
+    else if(event->key() == Qt::Key_1)
+    {
+        mMainWindowUI->VelocitySlider->setSliderPosition(velocity-1);
+    }
+    else if(event->key() == Qt::Key_3)
+    {
+        mMainWindowUI->VelocitySlider->setSliderPosition(velocity+1);
+    }
+    else if(event->key() == Qt::Key_4)
+    {
+        mMainWindowUI->AngleSlider->setSliderPosition(angle-1);
+    }
+    else if(event->key() == Qt::Key_6)
+    {
+        mMainWindowUI->AngleSlider->setSliderPosition(angle+1);
+    }
 }
 
 void MainWindow::on_actionExit_triggered()
