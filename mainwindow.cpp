@@ -11,8 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     mMainWindowUI{new Ui::MainWindowForm}
 {
     mMainWindowUI->setupUi(this);
-    tank->setRect(0,0,50,50);
-    tank2->setRect(0,0,50,50);
+    tank->setRect(0,0,30,30);
+    tank2->setRect(0,0,30,30);
     scene->addItem(tank);
     scene->addItem(tank2);
     mMainWindowUI->graphicsView->setScene(scene);
@@ -41,7 +41,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     else if(event->key() == Qt::Key_Space)
     {
         Bullet* bullet{new Bullet(tank->get_position(),velocity,angle)};
-        bullet->setRect(-10,0,10,10);
+        bullet->setRect(-10,0,5,5);
         tank->scene()->addItem(bullet);
     }
     else if(event->key() == Qt::Key_1)
@@ -70,7 +70,7 @@ void MainWindow::on_actionExit_triggered()
 void MainWindow::on_LaunchButton_clicked()
 {
     Bullet* bullet{new Bullet(tank->get_position(),velocity,angle)};
-    bullet->setRect(-10,0,10,10);
+    bullet->setRect(-10,0,5,5);
     tank->scene()->addItem(bullet);
 }
 
