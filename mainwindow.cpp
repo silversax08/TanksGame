@@ -30,27 +30,45 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
     if( event->key() == Qt::Key_Left )
     {
-        if(playerNumber == 1)
+        if(moveCount<=maxMovementPerTurn)
         {
-            tank->move_tank_left();
+            if(playerNumber == 1)
+            {
+                tank->move_tank_left();
+                moveCount++;
+            }
+            else if(playerNumber == 2)
+            {
+                tank2->move_tank_left();
+                moveCount++;
+            }
+            return;
         }
-        else if(playerNumber == 2)
+        else
         {
-             tank2->move_tank_left();
+            return;
         }
-        return;
     }
     else if(event->key() == Qt::Key_Right)
     {
-        if(playerNumber == 1)
+        if(moveCount<=maxMovementPerTurn)
         {
-            tank->move_tank_right();
+            if(playerNumber == 1)
+            {
+                tank->move_tank_right();
+                moveCount++;
+            }
+            else if(playerNumber == 2)
+            {
+                tank2->move_tank_right();
+                moveCount++;
+            }
+            return;
         }
-        else if(playerNumber == 2)
+        else
         {
-             tank2->move_tank_right();
+            return;
         }
-        return;
     }
     else if(event->key() == Qt::Key_Space)
     {
@@ -68,7 +86,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             tank->scene()->addItem(bullet);
             playerNumber = 1;
         }
-
+        moveCount = 0;
         mMainWindowUI->VelocitySlider->setSliderPosition(10);
         mMainWindowUI->AngleSlider->setSliderPosition(0);
     }
@@ -102,13 +120,18 @@ void MainWindow::on_LaunchButton_clicked()
         Bullet* bullet{new Bullet(tank->get_position(),velocity,angle)};
         bullet->setRect(-10,0,5,5);
         tank->scene()->addItem(bullet);
+        playerNumber = 2;
     }
     else if(playerNumber == 2)
     {
         Bullet* bullet{new Bullet(tank2->get_position(),velocity,angle)};
         bullet->setRect(-10,0,5,5);
         tank->scene()->addItem(bullet);
+        playerNumber = 1;
     }
+    moveCount = 0;
+    mMainWindowUI->VelocitySlider->setSliderPosition(10);
+    mMainWindowUI->AngleSlider->setSliderPosition(0);
 }
 
 void MainWindow::on_VelocitySlider_sliderMoved(int position)
@@ -133,24 +156,44 @@ void MainWindow::on_AngleSlider_valueChanged(int value)
 
 void MainWindow::on_leftButton_clicked()
 {
-    if(playerNumber == 1)
+    if(moveCount<=maxMovementPerTurn)
     {
-        tank->move_tank_left();
+        if(playerNumber == 1)
+        {
+            tank->move_tank_left();
+            moveCount++;
+        }
+        else if(playerNumber == 2)
+        {
+            tank2->move_tank_left();
+            moveCount++;
+        }
+        return;
     }
-    else if(playerNumber == 2)
+    else
     {
-         tank2->move_tank_left();
+        return;
     }
 }
 
 void MainWindow::on_rightButton_clicked()
 {
-    if(playerNumber == 1)
+    if(moveCount<=maxMovementPerTurn)
     {
-        tank->move_tank_right();
+        if(playerNumber == 1)
+        {
+            tank->move_tank_right();
+            moveCount++;
+        }
+        else if(playerNumber == 2)
+        {
+            tank2->move_tank_right();
+            moveCount++;
+        }
+        return;
     }
-    else if(playerNumber == 2)
+    else
     {
-         tank2->move_tank_right();
+        return;
     }
 }

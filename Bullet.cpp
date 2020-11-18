@@ -33,6 +33,13 @@ void Bullet::move()
 {
     position = physics->get_position();
 
+    if(position[1] >= 400)
+    {
+        scene()->removeItem(this);
+        delete this;
+        return;
+    }
+
     QList<QGraphicsItem*> collisions{collidingItems()};
     for(int i = 0, n = collisions.size(); i < n; ++i)
     {
