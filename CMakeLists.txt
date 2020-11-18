@@ -46,6 +46,7 @@ target_link_libraries(${PROJECT_NAME}
 add_executable(Unit_Tests
     calculate_new_velocity.cpp
     calculate_new_position.cpp
+    calculate_vector_velocity.cpp
     )
 
 target_link_libraries(Unit_Tests
