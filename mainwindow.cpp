@@ -11,8 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     mMainWindowUI{new Ui::MainWindowForm}
 {
     mMainWindowUI->setupUi(this);
-    tank->setRect(0,0,30,30);
-    tank2->setRect(0,0,30,30);
+//    tank->setRect(0,0,30,30);
+//    tank2->setRect(0,0,30,30);
     scene->addItem(tank);
     scene->addItem(tank2);
     mMainWindowUI->graphicsView->setScene(scene);

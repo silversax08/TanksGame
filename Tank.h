@@ -4,7 +4,7 @@
 #include <QGraphicsItem>
 #include <QGraphicsRectItem>
 
-class Tank : public QGraphicsRectItem
+class Tank : public QGraphicsPixmapItem
 {
 public:
     Tank();

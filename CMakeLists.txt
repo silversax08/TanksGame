@@ -17,6 +17,8 @@ SET(CMAKE_AUTOMOC ON)
 SET(CMAKE_AUTOUIC ON)
 SET(CMAKE_AUTORCC ON)
 
+set( MYRESOURCES icons/icons.qrc)
+
 add_library(ProjectileMotion STATIC
     ProjectileMotion.hpp
     ProjectileMotion.cpp
@@ -33,7 +35,10 @@ add_executable(${PROJECT_NAME}
     Tank.cpp
     Bullet.h
     Bullet.cpp
+#    icons/icons.qrc
+    ${MYRESOURCES}
 )
+
 target_link_libraries(${PROJECT_NAME}
     ${OPENSCENEGRAPH_LIBRARIES}
     Qt5::Widgets
@@ -54,3 +59,4 @@ target_link_libraries(Unit_Tests
     ${GTEST_MAIN_LIBRARIES}
     ProjectileMotion
 )
+

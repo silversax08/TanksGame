@@ -12,12 +12,13 @@ Tank::Tank()
 
 Tank::Tank(int inputXPos, int inputYPos)
 {
-    QGraphicsRectItem* rect = new QGraphicsRectItem;
+    QGraphicsPixmapItem* rect = new QGraphicsPixmapItem;
 //    rect->setRect(xPos,yPos,100,100);
 //    setPos(xPos,yPos);
     xPos = inputXPos;
     yPos = inputYPos;
-    rect->setRect(xPos,yPos,100,100);
+    setPixmap(QPixmap(":/myicons/Tank.png"));
+//    rect->setRect(xPos,yPos,100,100);
     setPos(xPos,yPos);
 }
 
