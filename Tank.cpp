@@ -12,7 +12,7 @@ Tank::Tank()
 
 Tank::Tank(int inputXPos, int inputYPos)
 {
-    QGraphicsPixmapItem* rect = new QGraphicsPixmapItem;
+//    QGraphicsPixmapItem* rect = new QGraphicsPixmapItem;
 //    rect->setRect(xPos,yPos,100,100);
 //    setPos(xPos,yPos);
     xPos = inputXPos;

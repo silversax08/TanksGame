@@ -33,7 +33,7 @@ void Bullet::move()
 {
     position = physics->get_position();
 
-    if(position[1] >= 400)
+    if(position[1] >= 425)
     {
         scene()->removeItem(this);
         delete this;
