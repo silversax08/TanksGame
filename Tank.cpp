@@ -17,7 +17,7 @@ Tank::Tank(int inputXPos, int inputYPos)
 //    setPos(xPos,yPos);
     xPos = inputXPos;
     yPos = inputYPos;
-    setPixmap(QPixmap(":/myicons/Tank.png"));
+    setPixmap(QPixmap(":/myicons/LittleTank.png"));
 //    rect->setRect(xPos,yPos,100,100);
     setPos(xPos,yPos);
 }

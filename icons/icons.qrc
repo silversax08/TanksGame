@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/myicons">
         <file>Tank.png</file>
+        <file>LittleTank.png</file>
     </qresource>
 </RCC>
