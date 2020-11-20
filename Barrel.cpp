@@ -1,30 +1,24 @@
-#include "Tank.h"
 #include "Barrel.h"
 #include <QKeyEvent>
 #include <QDebug>
 #include <array>
 
-Tank::Tank(int inputXPos, int inputYPos, int tankId)
+Barrel::Barrel(int inputXPos, int inputYPos)
 {
     xPos = inputXPos;
     yPos = inputYPos;
-    setPixmap(QPixmap(":/myicons/LittleTank3.png"));
+    setPixmap(QPixmap(":/myicons/Barrell.png"));
     setPos(xPos,yPos);
 
 }
 
-std::array<int,2> Tank::get_position()
-{
-    return{xPos,yPos};
-}
-
-void Tank::move_tank_left()
+void Barrel::move_barrel_left()
 {
     xPos = xPos - 10;
     setPos(xPos,yPos);
 }
 
-void Tank::move_tank_right()
+void Barrel::move_barrel_right()
 {
     xPos = xPos + 10;
     setPos(xPos,yPos);

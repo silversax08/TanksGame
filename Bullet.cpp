@@ -3,6 +3,7 @@
 #include "ProjectileMotion.hpp"
 #include <QList>
 #include "Tank.h"
+#include "Barrel.h"
 #include <QGraphicsScene>
 
 
@@ -43,7 +44,7 @@ void Bullet::move()
     QList<QGraphicsItem*> collisions{collidingItems()};
     for(int i = 0, n = collisions.size(); i < n; ++i)
     {
-        if(typeid(*(collisions[i])) == typeid(Tank))
+        if(typeid(*(collisions[i])) == typeid(Tank)||typeid(*(collisions[i])) == typeid(Barrel))
         {
             scene()->removeItem(collisions[i]);
             scene()->removeItem(this);

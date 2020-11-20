@@ -6,6 +6,7 @@
 #include <QtCore>
 #include <array>
 #include "Tank.h"
+#include "Barrel.h"
 
 namespace Ui {
 class MainWindowForm;
@@ -42,6 +43,8 @@ private:
     QGraphicsScene* scene{new QGraphicsScene};
     Tank* tank{new Tank(tank1Position[0],tank1Position[1],1)};
     Tank* tank2{new Tank(tank2Position[0],tank2Position[1],2)};
+    Barrel* barrel{new Barrel(tank1Position[0],tank1Position[1])};
+    Barrel* barrel2{new Barrel(tank2Position[0],tank2Position[1])};
 };
 
 #endif // MAINWINDOW_H

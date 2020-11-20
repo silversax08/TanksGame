@@ -35,7 +35,8 @@ add_executable(${PROJECT_NAME}
     Tank.cpp
     Bullet.h
     Bullet.cpp
-#    icons/icons.qrc
+    Barrel.h
+    Barrel.cpp
     ${MYRESOURCES}
 )
 

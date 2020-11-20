@@ -11,10 +11,10 @@ MainWindow::MainWindow(QWidget *parent) :
     mMainWindowUI{new Ui::MainWindowForm}
 {
     mMainWindowUI->setupUi(this);
-//    tank->setRect(0,0,30,30);
-//    tank2->setRect(0,0,30,30);
     scene->addItem(tank);
     scene->addItem(tank2);
+    scene->addItem(barrel);
+    scene->addItem(barrel2);
     mMainWindowUI->graphicsView->setScene(scene);
     scene->setSceneRect(0,0,550,525);
 }
@@ -35,11 +35,13 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             if(playerNumber == 1)
             {
                 tank->move_tank_left();
+                barrel->move_barrel_left();
                 moveCount++;
             }
             else if(playerNumber == 2)
             {
                 tank2->move_tank_left();
+                barrel2->move_barrel_left();
                 moveCount++;
             }
             return;
@@ -56,11 +58,13 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             if(playerNumber == 1)
             {
                 tank->move_tank_right();
+                barrel->move_barrel_right();
                 moveCount++;
             }
             else if(playerNumber == 2)
             {
                 tank2->move_tank_right();
+                barrel2->move_barrel_right();
                 moveCount++;
             }
             return;
@@ -161,11 +165,13 @@ void MainWindow::on_leftButton_clicked()
         if(playerNumber == 1)
         {
             tank->move_tank_left();
+            barrel->move_barrel_left();
             moveCount++;
         }
         else if(playerNumber == 2)
         {
             tank2->move_tank_left();
+            barrel2->move_barrel_left();
             moveCount++;
         }
         return;
@@ -183,11 +189,13 @@ void MainWindow::on_rightButton_clicked()
         if(playerNumber == 1)
         {
             tank->move_tank_right();
+            barrel->move_barrel_right();
             moveCount++;
         }
         else if(playerNumber == 2)
         {
             tank2->move_tank_right();
+            barrel2->move_barrel_right();
             moveCount++;
         }
         return;

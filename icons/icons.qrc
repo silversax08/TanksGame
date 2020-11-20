@@ -3,5 +3,7 @@
         <file>Tank.png</file>
         <file>LittleTank.png</file>
         <file>LittleTank2.png</file>
+        <file>LittleTank3.png</file>
+        <file>Barrell.png</file>
     </qresource>
 </RCC>
