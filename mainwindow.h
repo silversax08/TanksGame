@@ -40,8 +40,8 @@ private:
     std::array<int,2> tank1Position{50,350};
     std::array<int,2> tank2Position{450,350};
     QGraphicsScene* scene{new QGraphicsScene};
-    Tank* tank{new Tank(tank1Position[0],tank1Position[1])};
-    Tank* tank2{new Tank(tank2Position[0],tank2Position[1])};
+    Tank* tank{new Tank(tank1Position[0],tank1Position[1],1)};
+    Tank* tank2{new Tank(tank2Position[0],tank2Position[1],2)};
 };
 
 #endif // MAINWINDOW_H

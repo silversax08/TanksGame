@@ -3,23 +3,16 @@
 #include <QDebug>
 #include <array>
 
-Tank::Tank()
+Tank::Tank(int inputXPos, int inputYPos, int tankId)
 {
-    QGraphicsRectItem* rect = new QGraphicsRectItem;
-    rect->setRect(xPos,yPos,100,100);
-    setPos(xPos,yPos);
-}
-
-Tank::Tank(int inputXPos, int inputYPos)
-{
-//    QGraphicsPixmapItem* rect = new QGraphicsPixmapItem;
-//    rect->setRect(xPos,yPos,100,100);
-//    setPos(xPos,yPos);
     xPos = inputXPos;
     yPos = inputYPos;
-    setPixmap(QPixmap(":/myicons/LittleTank.png"));
-//    rect->setRect(xPos,yPos,100,100);
+    if(tankId == 1)
+        setPixmap(QPixmap(":/myicons/LittleTank.png"));
+    else
+        setPixmap(QPixmap(":/myicons/LittleTank2.png"));
     setPos(xPos,yPos);
+
 }
 
 std::array<int,2> Tank::get_position()

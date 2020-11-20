@@ -7,8 +7,7 @@
 class Tank : public QGraphicsPixmapItem
 {
 public:
-    Tank();
-    Tank(int inputXPos, int inputYPos);
+    Tank(int inputXPos, int inputYPos, int tankId);
     std::array<int,2> get_position();
     void move_tank_left();
     void move_tank_right();
