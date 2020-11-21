@@ -1,9 +1,9 @@
-#include "Barrel.h"
+#include "BarrelL.h"
 #include <QKeyEvent>
 #include <QDebug>
 #include <array>
 
-Barrel::Barrel(int inputXPos, int inputYPos)
+BarrelL::BarrelL(int inputXPos, int inputYPos)
 {
     xPos = inputXPos;
     yPos = inputYPos;
@@ -12,19 +12,19 @@ Barrel::Barrel(int inputXPos, int inputYPos)
     setTransformOriginPoint(0,0);
 }
 
-void Barrel::move_barrel_left()
+void BarrelL::move_barrel_left()
 {
     xPos = xPos - 10;
     setPos(xPos,yPos);
 }
 
-void Barrel::move_barrel_right()
+void BarrelL::move_barrel_right()
 {
     xPos = xPos + 10;
     setPos(xPos,yPos);
 }
 
-void Barrel::rotate_barrel(int inputAngle)
+void BarrelL::rotate_barrel(int inputAngle)
 {
     setTransformOriginPoint(50,50);
     setRotation(inputAngle);

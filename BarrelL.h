@@ -1,13 +1,13 @@
-#ifndef BARREL_H
-#define BARREL_H
+#ifndef BARRELL_H
+#define BARRELL_H
 
 #include <QGraphicsItem>
 #include <QGraphicsRectItem>
 
-class Barrel : public QGraphicsPixmapItem
+class BarrelL : public QGraphicsPixmapItem
 {
 public:
-    Barrel(int inputXPos, int inputYPos);
+    BarrelL(int inputXPos, int inputYPos);
     void move_barrel_left();
     void move_barrel_right();
     void rotate_barrel(int inputAngle);

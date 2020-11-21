@@ -1,13 +1,13 @@
-#ifndef TANK_H
-#define TANK_H
+#ifndef TANKL_H
+#define TANKL_H
 
 #include <QGraphicsItem>
 #include <QGraphicsRectItem>
 
-class Tank : public QGraphicsPixmapItem
+class TankL : public QGraphicsPixmapItem
 {
 public:
-    Tank(int inputXPos, int inputYPos, int tankId);
+    TankL(int inputXPos, int inputYPos, int tankId);
     std::array<int,2> get_position();
     void move_tank_left();
     void move_tank_right();

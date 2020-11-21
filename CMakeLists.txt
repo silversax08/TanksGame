@@ -31,12 +31,18 @@ add_executable(${PROJECT_NAME}
     mainwindow.cpp
     mainwindow.h
     mainwindowform.ui
-    Tank.h
-    Tank.cpp
+    TankL.h
+    TankL.cpp
+    TankR.h
+    TankR.cpp
     Bullet.h
     Bullet.cpp
-    Barrel.h
-    Barrel.cpp
+    BarrelL.h
+    BarrelL.cpp
+    BarrelR.h
+    BarrelR.cpp
+    Game.h
+    Game.cpp
     ${MYRESOURCES}
 )
 
