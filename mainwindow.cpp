@@ -105,10 +105,18 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     else if(event->key() == Qt::Key_4)
     {
         mMainWindowUI->AngleSlider->setSliderPosition(angle-1);
+        if(playerNumber == 1)
+            barrel->rotate_barrel(angle-1);
+        else
+            barrel2->rotate_barrel(angle-1);
     }
     else if(event->key() == Qt::Key_6)
     {
         mMainWindowUI->AngleSlider->setSliderPosition(angle+1);
+        if(playerNumber == 1)
+            barrel->rotate_barrel(angle+1);
+        else
+            barrel2->rotate_barrel(angle+1);
     }
 }
 
@@ -146,6 +154,10 @@ void MainWindow::on_VelocitySlider_sliderMoved(int position)
 void MainWindow::on_AngleSlider_sliderMoved(int position)
 {
     angle  = position;
+    if(playerNumber == 1)
+        barrel->rotate_barrel(angle);
+    else
+        barrel2->rotate_barrel(angle);
 }
 
 void MainWindow::on_VelocitySlider_valueChanged(int value)
@@ -156,6 +168,10 @@ void MainWindow::on_VelocitySlider_valueChanged(int value)
 void MainWindow::on_AngleSlider_valueChanged(int value)
 {
     angle  = value;
+    if(playerNumber == 1)
+        barrel->rotate_barrel(angle);
+    else
+        barrel2->rotate_barrel(angle);
 }
 
 void MainWindow::on_leftButton_clicked()
