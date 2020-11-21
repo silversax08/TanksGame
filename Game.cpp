@@ -1,5 +1,8 @@
 #include "Game.h"
 #include "Bullet.h"
+#include "TankL.h"
+#include "TankR.h"
+#include <array>
 
 
 Game::Game(QGraphicsScene *inputScene)
@@ -51,16 +54,62 @@ void Game::rotate_right_barrel(int angle)
 
 void Game::left_tank_fire(int velocity,int angle)
 {
-    Bullet* bullet{new Bullet(tank->get_position(),velocity,angle)};
+    Bullet* bullet{new Bullet(calculate_left_bullet_position(tank,angle),velocity,angle)};
     bullet->setRect(-10,0,5,5);
     scene->addItem(bullet);
 }
 
 void Game::right_tank_fire(int velocity, int angle)
 {
-    Bullet* bullet{new Bullet(tank2->get_position(),velocity,angle)};
+    Bullet* bullet{new Bullet(calculate_right_bullet_position(tank2,angle),velocity,angle)};
     bullet->setRect(-10,0,5,5);
     scene->addItem(bullet);
+}
+
+std::array<int,2> Game::calculate_left_bullet_position(TankL* tank, int angle)
+{
+    std::array<int,2> correction;
+    int image_half_size{50};
+    if(angle>=0)
+    {
+        correction[0] = cos((90-angle)*3.14/180)*image_half_size;
+        correction[1] = sin((90-angle)*3.14/180)*image_half_size;
+    }
+    else
+    {
+        correction[0] = -cos((90+angle)*3.14/180)*image_half_size;
+        correction[1] = sin((90+angle)*3.14/180)*image_half_size;
+    }
+
+
+    std::array<int,2> position;
+    std::array<int,2> tankPosition{tank->get_position()};
+    position[0] = tankPosition[0] + image_half_size + correction[0];
+    position[1] = tankPosition[1] + image_half_size - correction[1];
+    return position;
+}
+
+std::array<int,2> Game::calculate_right_bullet_position(TankR* tank, int angle)
+{
+    std::array<int,2> correction;
+    int image_half_size{50};
+    if(angle>=0)
+    {
+        correction[0] = cos((90-angle)*3.14/180)*image_half_size;
+        correction[1] = sin((90-angle)*3.14/180)*image_half_size;
+    }
+    else
+    {
+        correction[0] = -cos((90+angle)*3.14/180)*image_half_size;
+        correction[1] = sin((90+angle)*3.14/180)*image_half_size;
+    }
+
+
+    std::array<int,2> position;
+    std::array<int,2> tankPosition{tank->get_position()};
+    position[0] = tankPosition[0] + image_half_size + correction[0];
+    position[1] = tankPosition[1] + image_half_size - correction[1];
+    return position;
 }
 
 

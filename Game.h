@@ -27,6 +27,8 @@ private:
     TankR* tank2{new TankR(tank2Position[0],tank2Position[1],2)};
     BarrelL* barrel{new BarrelL(tank1Position[0],tank1Position[1])};
     BarrelR* barrel2{new BarrelR(tank2Position[0],tank2Position[1])};
+    std::array<int,2> calculate_left_bullet_position(TankL* tank, int angle);
+    std::array<int,2> calculate_right_bullet_position(TankR* tank, int angle);
 };
 
 #endif // GAME_H
