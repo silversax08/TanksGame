@@ -125,17 +125,6 @@ std::array<int,2> Game::calculate_right_bullet_position(TankR* tank, int angle)
 
 void Game::bullet_move()
 {
-//    if(counter == 0)
-//    {
-//        Bullet* bullet = new Bullet(calculate_left_bullet_position(tank,angle),velocity,angle);
-//        counter=1;
-//        qDebug()<<"This Happened First";
-//    }
-//    else
-//    {
-//        bullet->move();
-//        qDebug()<<"This Happened";
-//    }
     qDebug()<<"Test";
     double bulletPosition = bullet->move();
     if(bulletPosition>=425)
@@ -154,18 +143,22 @@ void Game::bullet_move()
             if(typeid(*(collisions[i])) == typeid(TankL))
             {
                 scene->removeItem(barrel);
+                delete barrel;
             }
             else if(typeid(*(collisions[i])) == typeid(TankR))
             {
                 scene->removeItem(barrel2);
+                delete barrel2;
             }
             else if(typeid(*(collisions[i])) == typeid(BarrelL))
             {
                 scene->removeItem(tank);
+                delete tank;
             }
             else if(typeid(*(collisions[i])) == typeid(BarrelR))
             {
                 scene->removeItem(tank2);
+                delete tank2;
             }
             scene->removeItem(collisions[i]);
             scene->removeItem(bullet);
