@@ -13,14 +13,13 @@ class Bullet : public QObject,public QGraphicsRectItem
 public:
     Bullet(std::array<int,2> inputPosition, int inputVelocity, int inputAngle);
     double get_vertical_position();
+    double move();
 private:
     ProjectileMotion* physics;
     int velocity{0};
     int angle{0};
     int deltaT{50};
     std::array<double,2> position;
-private slots:
-    void move();
 };
 
 #endif // BULLET_H

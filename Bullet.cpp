@@ -22,9 +22,9 @@ Bullet::Bullet(std::array<int,2> inputPosition, int inputVelocity, int inputAngl
     bullet->setRect(position[0],position[1],10,10);
     setPos(position[0],position[1]);
 
-    QTimer* timer = new QTimer();
-    connect(timer,SIGNAL(timeout()),this,SLOT(move()));
-    timer->start(deltaT);
+//    QTimer* timer = new QTimer();
+//    connect(timer,SIGNAL(timeout()),this,SLOT(move()));
+//    timer->start(deltaT);
 }
 
 double Bullet::get_vertical_position()
@@ -32,29 +32,30 @@ double Bullet::get_vertical_position()
     return position[1];
 }
 
-void Bullet::move()
+double Bullet::move()
 {
     position = physics->get_position();
 
-    if(position[1] >= 425)
-    {
-        scene()->removeItem(this);
-        delete this;
-        return;
-    }
+//    if(position[1] >= 425)
+//    {
+//        scene()->removeItem(this);
+//        delete this;
+//        return;
+//    }
 
-    QList<QGraphicsItem*> collisions{collidingItems()};
-    for(int i = 0, n = collisions.size(); i < n; ++i)
-    {
-        if(typeid(*(collisions[i])) == typeid(TankL)||typeid(*(collisions[i])) == typeid(TankR)||typeid(*(collisions[i])) == typeid(BarrelL)||typeid(*(collisions[i])) == typeid(BarrelR))
-        {
-            scene()->removeItem(collisions[i]);
-            scene()->removeItem(this);
-            delete collisions[i];
-            delete this;
-            return;
-        }
-    }
+//    QList<QGraphicsItem*> collisions{collidingItems()};
+//    for(int i = 0, n = collisions.size(); i < n; ++i)
+//    {
+//        if(typeid(*(collisions[i])) == typeid(TankL)||typeid(*(collisions[i])) == typeid(TankR)||typeid(*(collisions[i])) == typeid(BarrelL)||typeid(*(collisions[i])) == typeid(BarrelR))
+//        {
+//            scene()->removeItem(collisions[i]);
+//            scene()->removeItem(this);
+//            delete collisions[i];
+//            delete this;
+//            return;
+//        }
+//    }
 
     setPos(position[0],position[1]);
+    return position[1];
 }
