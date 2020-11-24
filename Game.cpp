@@ -59,7 +59,6 @@ void Game::rotate_right_barrel(int angle)
 void Game::left_tank_fire(int velocity,int angle)
 {
     bullet = new Bullet(calculate_left_bullet_position(tank,angle),velocity,angle);
-//    Bullet* bullet{new Bullet(calculate_left_bullet_position(tank,angle),velocity,angle)};
     bullet->setRect(-10,0,5,5);
     scene->addItem(bullet);
     timer->start(deltaT);
@@ -67,11 +66,7 @@ void Game::left_tank_fire(int velocity,int angle)
 
 void Game::right_tank_fire(int velocity, int angle)
 {
-//    Bullet* bullet{new Bullet(calculate_right_bullet_position(tank2,angle),velocity,angle)};
-//    bullet->setRect(-10,0,5,5);
-//    scene->addItem(bullet);
     bullet = new Bullet(calculate_right_bullet_position(tank2,angle),velocity,angle);
-//    Bullet* bullet{new Bullet(calculate_left_bullet_position(tank,angle),velocity,angle)};
     bullet->setRect(-10,0,5,5);
     scene->addItem(bullet);
     timer->start(deltaT);
