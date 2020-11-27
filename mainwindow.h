@@ -10,6 +10,8 @@
 #include "BarrelL.h"
 #include "BarrelR.h"
 #include "Game.h"
+#include "startscreen.h"
+#include "gamevisual.h"
 
 namespace Ui {
 class MainWindowForm;
@@ -31,10 +33,12 @@ private slots:
     void on_VelocitySlider_valueChanged(int value);
     void on_AngleSlider_valueChanged(int value);
     void on_leftButton_clicked();
-
     void on_rightButton_clicked();
+    void on_StartButton_clicked();
 
 private:
+    StartScreen* startScreen{new StartScreen(this)};
+    GameVisual* gameVisual{new GameVisual};
     Ui::MainWindowForm *mMainWindowUI;
     int velocity{10};
     int angle{0};

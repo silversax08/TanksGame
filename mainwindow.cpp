@@ -1,4 +1,6 @@
 #include "mainwindow.h"
+#include "startscreen.h"
+#include "gamevisual.h"
 #include "ui_mainwindowform.h"
 
 #include "TankL.h"
@@ -17,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     mMainWindowUI->graphicsView->setScene(scene);
     scene->setSceneRect(0,0,550,525);
+    this->setCentralWidget(gameVisual);
 }
 
 MainWindow::~MainWindow()
@@ -204,4 +207,9 @@ void MainWindow::on_rightButton_clicked()
     {
         return;
     }
+}
+
+void MainWindow::on_StartButton_clicked()
+{
+    qDebug()<<"Test";
 }

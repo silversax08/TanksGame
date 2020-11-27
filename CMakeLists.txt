@@ -43,6 +43,12 @@ add_executable(${PROJECT_NAME}
     BarrelR.cpp
     Game.h
     Game.cpp
+    startscreen.h
+    startscreen.cpp
+    startscreen.ui
+    gamevisual.h
+    gamevisual.cpp
+    gamevisual.ui
     ${MYRESOURCES}
 )
 
