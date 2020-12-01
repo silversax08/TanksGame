@@ -27,18 +27,12 @@ public:
 public slots:
     void on_actionExit_triggered();
 private slots:
-    void on_LaunchButton_clicked();
-    void on_VelocitySlider_sliderMoved(int position);
-    void on_AngleSlider_sliderMoved(int position);
-    void on_VelocitySlider_valueChanged(int value);
-    void on_AngleSlider_valueChanged(int value);
-    void on_leftButton_clicked();
-    void on_rightButton_clicked();
+
     void on_StartButton_clicked();
 
 private:
-    StartScreen* startScreen{new StartScreen(this)};
-    GameVisual* gameVisual{new GameVisual};
+//    GameVisual* gameVisual{new GameVisual(this)};
+//    StartScreen* startScreen{new StartScreen(this)};
     Ui::MainWindowForm *mMainWindowUI;
     int velocity{10};
     int angle{0};
@@ -46,7 +40,7 @@ private:
     int moveCount{0};
     int maxMovementPerTurn{5};
     QGraphicsScene* scene{new QGraphicsScene};
-    Game* game;
+//    Game* game;
 };
 
 #endif // MAINWINDOW_H

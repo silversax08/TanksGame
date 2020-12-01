@@ -28,7 +28,7 @@
     </spacer>
    </item>
    <item row="0" column="3" rowspan="10">
-    <widget class="QGraphicsView" name="graphicsView">
+    <widget class="QGraphicsView" name="graphicsView2">
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
      </property>
@@ -41,7 +41,7 @@
     </widget>
    </item>
    <item row="1" column="0" colspan="3">
-    <widget class="QPushButton" name="LaunchButton">
+    <widget class="QPushButton" name="LaunchButton2">
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
      </property>
@@ -51,14 +51,14 @@
     </widget>
    </item>
    <item row="2" column="0">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="label2">
      <property name="text">
       <string>Power</string>
      </property>
     </widget>
    </item>
    <item row="3" column="0" colspan="3">
-    <widget class="QSlider" name="VelocitySlider">
+    <widget class="QSlider" name="VelocitySlider2">
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
      </property>
@@ -83,7 +83,7 @@
     </widget>
    </item>
    <item row="4" column="0">
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="label3">
      <property name="text">
       <string>Direction</string>
      </property>
@@ -103,7 +103,7 @@
     </spacer>
    </item>
    <item row="5" column="0" colspan="3">
-    <widget class="QSlider" name="AngleSlider">
+    <widget class="QSlider" name="AngleSlider2">
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
      </property>
@@ -138,14 +138,14 @@
     </spacer>
    </item>
    <item row="7" column="0">
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="label4">
      <property name="text">
       <string>Move</string>
      </property>
     </widget>
    </item>
    <item row="8" column="0" colspan="2">
-    <widget class="QPushButton" name="leftButton">
+    <widget class="QPushButton" name="leftButton2">
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
      </property>
@@ -155,7 +155,7 @@
     </widget>
    </item>
    <item row="8" column="2">
-    <widget class="QPushButton" name="rightButton">
+    <widget class="QPushButton" name="rightButton2">
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
      </property>

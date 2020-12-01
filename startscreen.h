@@ -19,6 +19,12 @@ public:
 private:
     Ui::StartScreen *ui;
     QGraphicsScene* scene{new QGraphicsScene};
+
+signals:
+    void startButton_clicked();
+
+private slots:
+    void on_StartButton_clicked();
 };
 
 #endif // STARTSCREEN_H

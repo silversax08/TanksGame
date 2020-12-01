@@ -14,3 +14,8 @@ StartScreen::~StartScreen()
 {
     delete ui;
 }
+
+void StartScreen::on_StartButton_clicked()
+{
+    emit(startButton_clicked());
+}
