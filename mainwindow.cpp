@@ -7,6 +7,7 @@
 #include "TankR.h"
 #include "Bullet.h"
 #include "Game.h"
+#include "winnerscreen.h"
 #include <QGraphicsView>
 #include <QKeyEvent>
 
@@ -141,8 +142,9 @@ void MainWindow::on_StartButton_clicked()
 {
     qDebug()<<"Test";
     delete this->centralWidget();
-    GameVisual* gameVisual{new GameVisual(this)};
-//    gameVisual->scene=this->scene;
-    gameVisual->setScene();
-    this->setCentralWidget(gameVisual);
+//    GameVisual* gameVisual{new GameVisual(this)};
+//    gameVisual->setScene();
+//    this->setCentralWidget(gameVisual);
+    WinnerScreen* winnerScreen{new WinnerScreen};
+    this->setCentralWidget(winnerScreen);
 }

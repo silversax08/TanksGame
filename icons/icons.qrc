@@ -6,5 +6,7 @@
         <file>LittleTank3.png</file>
         <file>Barrell.png</file>
         <file>Tanks.jpg</file>
+        <file>Player1.png</file>
+        <file>Player2.png</file>
     </qresource>
 </RCC>

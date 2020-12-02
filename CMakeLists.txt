@@ -49,6 +49,9 @@ add_executable(${PROJECT_NAME}
     gamevisual.h
     gamevisual.cpp
     gamevisual.ui
+    winnerscreen.h
+    winnerscreen.cpp
+    winnerscreen.ui
     ${MYRESOURCES}
 )
 
