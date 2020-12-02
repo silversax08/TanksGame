@@ -2,14 +2,22 @@
 <ui version="4.0">
  <class>StartScreen</class>
  <widget class="QWidget" name="StartScreen">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>612</height>
+   </rect>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <widget class="QPushButton" name="StartButton">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>250</y>
+     <x>330</x>
+     <y>270</y>
      <width>101</width>
      <height>81</height>
     </rect>

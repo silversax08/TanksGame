@@ -139,25 +139,30 @@ void Game::bullet_move()
             {
                 scene->removeItem(barrel);
                 delete barrel;
+                emit tank1_hit();
             }
             else if(typeid(*(collisions[i])) == typeid(TankR))
             {
                 scene->removeItem(barrel2);
                 delete barrel2;
+                emit tank2_hit();
             }
             else if(typeid(*(collisions[i])) == typeid(BarrelL))
             {
                 scene->removeItem(tank);
                 delete tank;
+                emit tank1_hit();
             }
             else if(typeid(*(collisions[i])) == typeid(BarrelR))
             {
                 scene->removeItem(tank2);
                 delete tank2;
+                emit tank2_hit();
             }
             scene->removeItem(collisions[i]);
             scene->removeItem(bullet);
             delete collisions[i];
+            qDebug()<<"Game Trigger";
 //            delete bullet;
             return;
         }

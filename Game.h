@@ -37,6 +37,9 @@ private:
     int deltaT{50};
     QTimer* timer{new QTimer()};
     int counter{0};
+signals:
+    void tank1_hit();
+    void tank2_hit();
 
 private slots:
     void bullet_move();

@@ -27,8 +27,10 @@ public:
 public slots:
     void on_actionExit_triggered();
 private slots:
-
+    void on_tank1_hit();
+    void on_tank2_hit();
     void on_StartButton_clicked();
+    void on_playMenu_clicked();
 
 private:
 //    GameVisual* gameVisual{new GameVisual(this)};

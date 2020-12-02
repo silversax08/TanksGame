@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QGraphicsScene>
+#include <QPainter>
 
 namespace Ui {
 class StartScreen;
@@ -17,6 +18,8 @@ public:
     ~StartScreen();
 
 private:
+    void paintEvent(QPaintEvent* event);
+    QPixmap startScreen{QPixmap(":/myicons/startscreen.png")};
     Ui::StartScreen *ui;
     QGraphicsScene* scene{new QGraphicsScene};
 

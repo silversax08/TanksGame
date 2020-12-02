@@ -136,15 +136,41 @@ void MainWindow::on_actionExit_triggered()
     QApplication::quit();
 }
 
+void MainWindow::on_tank1_hit()
+{
+    qDebug()<<"Tank 1 Hit";
+    delete this->centralWidget();
+    WinnerScreen* winnerScreen{new WinnerScreen(this,2)};
+    connect(winnerScreen,SIGNAL(playButton_clicked()),SLOT(on_playMenu_clicked()));
+    this->setCentralWidget(winnerScreen);
+}
 
+void MainWindow::on_tank2_hit()
+{
+    delete this->centralWidget();
+    WinnerScreen* winnerScreen{new WinnerScreen(this,1)};
+    connect(winnerScreen,SIGNAL(playButton_clicked()),SLOT(on_playMenu_clicked()));
+    this->setCentralWidget(winnerScreen);
+}
 
 void MainWindow::on_StartButton_clicked()
 {
     qDebug()<<"Test";
     delete this->centralWidget();
-//    GameVisual* gameVisual{new GameVisual(this)};
-//    gameVisual->setScene();
-//    this->setCentralWidget(gameVisual);
-    WinnerScreen* winnerScreen{new WinnerScreen};
-    this->setCentralWidget(winnerScreen);
+    GameVisual* gameVisual{new GameVisual(this)};
+    connect(gameVisual->game,SIGNAL(tank1_hit()),SLOT(on_tank1_hit()));
+    connect(gameVisual->game,SIGNAL(tank2_hit()),SLOT(on_tank2_hit()));
+    gameVisual->setScene();
+    this->setCentralWidget(gameVisual);
+//    WinnerScreen* winnerScreen{new WinnerScreen};
+    //    this->setCentralWidget(winnerScreen);
+}
+
+void MainWindow::on_playMenu_clicked()
+{
+    delete this->centralWidget();
+    GameVisual* gameVisual{new GameVisual(this)};
+    connect(gameVisual->game,SIGNAL(tank2_hit()),SLOT(on_tank2_hit()));
+    gameVisual->setScene();
+    this->setCentralWidget(gameVisual);
 }
