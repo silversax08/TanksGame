@@ -2,9 +2,7 @@
 #define WINNERSCREEN_H
 
 #include <QWidget>
-#include <QGraphicsScene>
 #include <QPixmap>
-#include <QPaintEvent>
 
 namespace Ui {
 class WinnerScreen;
@@ -13,7 +11,6 @@ class WinnerScreen;
 class WinnerScreen : public QWidget
 {
     Q_OBJECT
-
 public:
     explicit WinnerScreen(QWidget *parent = nullptr, int winningTank = 1);
     ~WinnerScreen();
@@ -28,10 +25,7 @@ signals:
 private:
     void paintEvent(QPaintEvent* event);
     Ui::WinnerScreen *ui3;
-    QGraphicsScene* scene{new QGraphicsScene};
     QPixmap winner;
-//    QPaintEvent *event;
-
 };
 
 #endif // WINNERSCREEN_H

@@ -160,7 +160,7 @@ void MainWindow::on_StartButton_clicked()
     GameVisual* gameVisual{new GameVisual(this)};
     connect(gameVisual->game,SIGNAL(tank1_hit()),SLOT(on_tank1_hit()));
     connect(gameVisual->game,SIGNAL(tank2_hit()),SLOT(on_tank2_hit()));
-    gameVisual->setScene();
+    gameVisual->set_scene();
     this->setCentralWidget(gameVisual);
 //    WinnerScreen* winnerScreen{new WinnerScreen};
     //    this->setCentralWidget(winnerScreen);
@@ -171,6 +171,6 @@ void MainWindow::on_playMenu_clicked()
     delete this->centralWidget();
     GameVisual* gameVisual{new GameVisual(this)};
     connect(gameVisual->game,SIGNAL(tank2_hit()),SLOT(on_tank2_hit()));
-    gameVisual->setScene();
+    gameVisual->set_scene();
     this->setCentralWidget(gameVisual);
 }

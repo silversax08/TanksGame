@@ -18,7 +18,7 @@ public:
     explicit GameVisual(QWidget *parent = nullptr);
     ~GameVisual();
     Ui::GameVisual *ui;
-    void setScene();
+    void set_scene();
     Game* game;
 
 private:

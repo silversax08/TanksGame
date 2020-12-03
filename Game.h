@@ -3,7 +3,7 @@
 
 #include <QGraphicsScene>
 #include <QTimer>
-#include <array>
+//#include <array>
 #include "TankL.h"
 #include "TankR.h"
 #include "BarrelL.h"
@@ -21,6 +21,7 @@ public:
     void rotate_right_barrel(int angle);
     void left_tank_fire(int velocity,int angle);
     void right_tank_fire(int velocity,int angle);
+
 private:
     QGraphicsScene* scene;
     std::array<int,2> tank1Position{50,350};
@@ -37,6 +38,7 @@ private:
     int deltaT{50};
     QTimer* timer{new QTimer()};
     int counter{0};
+
 signals:
     void tank1_hit();
     void tank2_hit();

@@ -2,7 +2,6 @@
 #define STARTSCREEN_H
 
 #include <QWidget>
-#include <QGraphicsScene>
 #include <QPainter>
 
 namespace Ui {
@@ -21,7 +20,6 @@ private:
     void paintEvent(QPaintEvent* event);
     QPixmap startScreen{QPixmap(":/myicons/startscreen.png")};
     Ui::StartScreen *ui;
-    QGraphicsScene* scene{new QGraphicsScene};
 
 signals:
     void startButton_clicked();

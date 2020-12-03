@@ -2,7 +2,6 @@
 #define BARRELL_H
 
 #include <QGraphicsItem>
-#include <QGraphicsRectItem>
 
 class BarrelL : public QGraphicsPixmapItem
 {
@@ -11,6 +10,7 @@ public:
     void move_barrel_left();
     void move_barrel_right();
     void rotate_barrel(int inputAngle);
+
 private:
     int xPos{250};
     int yPos{250};

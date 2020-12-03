@@ -16,7 +16,7 @@ GameVisual::~GameVisual()
     delete ui;
 }
 
-void GameVisual::setScene()
+void GameVisual::set_scene()
 {
     ui->graphicsView2->setScene(scene);
 }

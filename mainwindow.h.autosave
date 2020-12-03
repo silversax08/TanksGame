@@ -15,8 +15,10 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     virtual void keyPressEvent( QKeyEvent* event );
+    
 public slots:
     void on_actionExit_triggered();
+    
 private slots:
     void on_tank1_hit();
     void on_tank2_hit();

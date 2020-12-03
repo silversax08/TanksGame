@@ -2,7 +2,6 @@
 #define TANKR_H
 
 #include <QGraphicsItem>
-#include <QGraphicsRectItem>
 
 class TankR : public QGraphicsPixmapItem
 {
@@ -11,6 +10,7 @@ public:
     std::array<int,2> get_position();
     void move_tank_left();
     void move_tank_right();
+
 private:
     int xPos{250};
     int yPos{250};

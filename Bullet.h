@@ -2,10 +2,8 @@
 #define BULLET_H
 
 #include <QGraphicsRectItem>
-#include <array>
 #include <QObject>
 #include "ProjectileMotion.hpp"
-#include "ProjectileMotionEquations.hpp"
 
 class Bullet : public QObject,public QGraphicsRectItem
 {
@@ -14,6 +12,7 @@ public:
     Bullet(std::array<int,2> inputPosition, int inputVelocity, int inputAngle);
     double get_vertical_position();
     double move();
+
 private:
     ProjectileMotion* physics;
     int velocity{0};
