@@ -3,7 +3,6 @@
 
 #include <QGraphicsScene>
 #include <QTimer>
-//#include <array>
 #include "TankL.h"
 #include "TankR.h"
 #include "BarrelL.h"
@@ -30,7 +29,7 @@ private:
     BarrelR* barrel2{new BarrelR(tank2Position[0],tank2Position[1])};
     std::array<int,2> calculate_bullet_position(int angle, int tankNumber);
     void add_tanks_to_screen();
-//    int deltaT{50};
+    int deltaT{50};
     QTimer* timer{new QTimer()};
     int counter{0};
 

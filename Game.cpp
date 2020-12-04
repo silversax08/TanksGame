@@ -1,11 +1,5 @@
 #include "Game.h"
-#include "Bullet.h"
-#include "TankL.h"
-#include "TankR.h"
 #include "GameFunctions.h"
-#include <array>
-#include <QTimer>
-
 
 Game::Game(QGraphicsScene *inputScene)
 {
