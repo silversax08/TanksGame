@@ -14,55 +14,34 @@ Game::Game(QGraphicsScene *inputScene)
     connect(timer,SIGNAL(timeout()),this,SLOT(bullet_move()));
 }
 
-void Game::move_left_tank(std::string direction)
+void Game::move_tank(std::string direction, int idNumber)
 {
-    if(direction == "Left")
+    if(idNumber==1)
     {
         tank->move_tank(direction);
         barrel->move_barrel(direction);
     }
     else
     {
-        tank->move_tank(direction);
-        barrel->move_barrel(direction);
+        tank2->move_tank(direction);
+        barrel2->move_barrel(direction);
     }
 }
 
-void Game::move_right_tank(std::string direction)
+void Game::rotate_barrel(int angle, int idNumber)
 {
-        tank2->move_tank(direction);
-        barrel2->move_barrel(direction);
-}
-
-void Game::rotate_left_barrel(int angle)
-{
-    barrel->rotate_barrel(angle);
-}
-
-void Game::rotate_right_barrel(int angle)
-{
-    barrel2->rotate_barrel(angle);
+    if(idNumber==1)
+        barrel->rotate_barrel(angle);
+    else
+        barrel2->rotate_barrel(angle);
 }
 
 void Game::tank_fire(int velocity,int angle, int playerNumber)
 {
-    create_bullet(velocity,angle,playerNumber);
+    bullet = new Bullet(calculate_bullet_position(angle,playerNumber),velocity,angle);
     bullet->setRect(-10,0,5,5);
     scene->addItem(bullet);
     timer->start(deltaT);
-}
-
-void Game::create_bullet(int velocity, int angle, int playerNumber)
-{
-    if(playerNumber==1)
-        bullet = new Bullet(calculate_left_bullet_position(angle),velocity,angle);
-    else
-        bullet = new Bullet(calculate_right_bullet_position(angle),velocity,angle);
-}
-
-std::array<int,2> Game::add_bullet_position_componants_together(int angle, std::array<int,2> tankPosition)
-{
-    return GameFunctions::add_bullet_position_componants_together(angle,tankPosition);
 }
 
 void Game::add_tanks_to_screen()
@@ -73,17 +52,14 @@ void Game::add_tanks_to_screen()
     scene->addItem(barrel2);
 }
 
-std::array<int,2> Game::calculate_left_bullet_position(int angle)
+std::array<int,2> Game::calculate_bullet_position(int angle,int tankNumber)
 {
-
-    std::array<int,2> tankPosition{tank->get_position()};
-    return add_bullet_position_componants_together(angle,tankPosition);
-}
-
-std::array<int,2> Game::calculate_right_bullet_position(int angle)
-{
-    std::array<int,2> tankPosition{tank2->get_position()};
-    return add_bullet_position_componants_together(angle,tankPosition);
+    std::array<int,2> tankPosition;
+    if(tankNumber==1)
+        tankPosition = tank->get_position();
+    else
+        tankPosition = tank2->get_position();
+    return GameFunctions::add_bullet_position_componants_together(angle,tankPosition);
 }
 
 void Game::bullet_move()

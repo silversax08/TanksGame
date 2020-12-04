@@ -33,20 +33,14 @@ void GameVisual::fire_bullet()
 
 void GameVisual::rotate_barrel()
 {
-    if(playerNumber == 1)
-        game->rotate_left_barrel(angle);
-    else
-        game->rotate_right_barrel(angle);
+        game->rotate_barrel(angle,playerNumber);
 }
 
 void GameVisual::move_tank(std::string direction)
 {
     if(moveCount<=maxMovementPerTurn)
     {
-        if(playerNumber == 1)
-            game->move_left_tank(direction);
-        else
-            game->move_right_tank(direction);
+        game->move_tank(direction,playerNumber);
         moveCount++;
         return;
     }
