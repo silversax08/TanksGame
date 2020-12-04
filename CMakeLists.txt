@@ -26,6 +26,11 @@ add_library(ProjectileMotion STATIC
     ProjectileMotionEquations.cpp
   )
 
+add_library(TanksVisualsFunctions STATIC
+    GameFunctions.h
+    GameFunctions.cpp
+  )
+
 add_executable(${PROJECT_NAME}
     main.cpp
     mainwindow.cpp
@@ -62,6 +67,7 @@ target_link_libraries(${PROJECT_NAME}
     ${GTEST_LIBRARIES}
     ${GTEST_MAIN_LIBRARIES}
     ProjectileMotion
+    TanksVisualsFunctions
 )
 
 add_executable(Unit_Tests
@@ -70,11 +76,13 @@ add_executable(Unit_Tests
     calculate_vector_velocity.cpp
     calculate_correction_position_from_game_class.cpp
     add_bullet_position_componants_together_from_game_class.cpp
+    degrees_to_radians_conversion.cpp
     )
 
 target_link_libraries(Unit_Tests
     ${GTEST_LIBRARIES}
     ${GTEST_MAIN_LIBRARIES}
     ProjectileMotion
+    TanksVisualsFunctions
 )
 

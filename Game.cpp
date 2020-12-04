@@ -2,6 +2,7 @@
 #include "Bullet.h"
 #include "TankL.h"
 #include "TankR.h"
+#include "GameFunctions.h"
 #include <array>
 #include <QTimer>
 
@@ -17,28 +18,20 @@ void Game::move_left_tank(std::string direction)
 {
     if(direction == "Left")
     {
-        tank->move_tank(1);
-        barrel->move_barrel(1);
+        tank->move_tank(direction);
+        barrel->move_barrel(direction);
     }
     else
     {
-        tank->move_tank(2);
-        barrel->move_barrel(2);
+        tank->move_tank(direction);
+        barrel->move_barrel(direction);
     }
 }
 
 void Game::move_right_tank(std::string direction)
 {
-    if(direction == "Left")
-    {
-        tank2->move_tank(1);
-        barrel2->move_barrel(1);
-    }
-    else
-    {
-        tank2->move_tank(2);
-        barrel2->move_barrel(2);
-    }
+        tank2->move_tank(direction);
+        barrel2->move_barrel(direction);
 }
 
 void Game::rotate_left_barrel(int angle)
@@ -69,27 +62,7 @@ void Game::create_bullet(int velocity, int angle, int playerNumber)
 
 std::array<int,2> Game::add_bullet_position_componants_together(int angle, std::array<int,2> tankPosition)
 {
-    std::array<int,2> position;
-    std::array<int,2> correction{calculate_correction_position(angle)};
-    position[0] = tankPosition[0] + image_half_size + correction[0];
-    position[1] = tankPosition[1] + image_half_size - correction[1];
-    return position;
-}
-
-std::array<int,2> Game::calculate_correction_position(int angle)
-{
-    std::array<int,2> correction;
-    if(angle>=0)
-    {
-        correction[0] = cos((90-angle)*3.14/180)*image_half_size;
-        correction[1] = sin((90-angle)*3.14/180)*image_half_size;
-    }
-    else
-    {
-        correction[0] = -cos((90+angle)*3.14/180)*image_half_size;
-        correction[1] = sin((90+angle)*3.14/180)*image_half_size;
-    }
-    return correction;
+    return GameFunctions::add_bullet_position_componants_together(angle,tankPosition);
 }
 
 void Game::add_tanks_to_screen()

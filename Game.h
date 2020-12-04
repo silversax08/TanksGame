@@ -36,7 +36,6 @@ private:
     std::array<int,2> add_bullet_position_componants_together(int angle, std::array<int,2> tankPosition);
     std::array<int,2> calculate_left_bullet_position(int angle);
     std::array<int,2> calculate_right_bullet_position(int angle);
-    std::array<int,2> calculate_correction_position(int angle);
     void create_bullet(int velocity, int angle, int playerNumber);
     void add_tanks_to_screen();
     int deltaT{50};

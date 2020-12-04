@@ -14,9 +14,9 @@ std::array<int,2> TankR::get_position()
     return{xPos,yPos};
 }
 
-void TankR::move_tank(int direction)
+void TankR::move_tank(std::string direction)
 {
-    if(direction==1)
+    if(direction=="Left")
         xPos = xPos - 10;
     else
         xPos = xPos + 10;

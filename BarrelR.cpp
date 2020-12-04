@@ -9,9 +9,9 @@ BarrelR::BarrelR(int inputXPos, int inputYPos)
     setTransformOriginPoint(0,0);
 }
 
-void BarrelR::move_barrel(int direction)
+void BarrelR::move_barrel(std::string direction)
 {
-    if(direction==1)
+    if(direction=="Left")
         xPos = xPos - 10;
     else
         xPos = xPos + 10;

@@ -8,6 +8,7 @@ GameVisual::GameVisual(QWidget *parent) :
     ui->setupUi(this);
     game = new Game(scene);
     scene->setSceneRect(0,0,550,525);
+//    scene->addItem(startScreen);
     ui->graphicsView2->setScene(scene);
 }
 

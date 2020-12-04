@@ -8,7 +8,7 @@ class TankL : public QGraphicsPixmapItem
 public:
     TankL(int inputXPos, int inputYPos);
     std::array<int,2> get_position();
-    void move_tank(int direction);
+    void move_tank(std::string direction);
 
 private:
     int xPos{250};

@@ -20,9 +20,10 @@ public:
     Game* game;
 
 private:
+    void move_tank(std::string direction);
+    QPixmap startScreen{QPixmap(":/myicons/startscreen.png")};
     void fire_bullet();
     void rotate_barrel();
-    void move_tank(std::string direction);
     QGraphicsScene* scene{new QGraphicsScene};
     int velocity{10};
     int angle{0};
