@@ -4,17 +4,12 @@
 #include "TankR.h"
 #include <array>
 #include <QTimer>
-#include <QDebug>
 
 
 Game::Game(QGraphicsScene *inputScene)
 {
     scene = inputScene;
-    scene->addItem(tank);
-    scene->addItem(tank2);
-    scene->addItem(barrel);
-    scene->addItem(barrel2);
-
+    add_tanks_to_screen();
     connect(timer,SIGNAL(timeout()),this,SLOT(bullet_move()));
 }
 
@@ -56,26 +51,34 @@ void Game::rotate_right_barrel(int angle)
     barrel2->rotate_barrel(angle);
 }
 
-void Game::left_tank_fire(int velocity,int angle)
+void Game::tank_fire(int velocity,int angle, int playerNumber)
 {
-    bullet = new Bullet(calculate_left_bullet_position(tank,angle),velocity,angle);
+    create_bullet(velocity,angle,playerNumber);
     bullet->setRect(-10,0,5,5);
     scene->addItem(bullet);
     timer->start(deltaT);
 }
 
-void Game::right_tank_fire(int velocity, int angle)
+void Game::create_bullet(int velocity, int angle, int playerNumber)
 {
-    bullet = new Bullet(calculate_right_bullet_position(tank2,angle),velocity,angle);
-    bullet->setRect(-10,0,5,5);
-    scene->addItem(bullet);
-    timer->start(deltaT);
+    if(playerNumber==1)
+        bullet = new Bullet(calculate_left_bullet_position(angle),velocity,angle);
+    else
+        bullet = new Bullet(calculate_right_bullet_position(angle),velocity,angle);
 }
 
-std::array<int,2> Game::calculate_left_bullet_position(TankL* tank, int angle)
+std::array<int,2> Game::add_bullet_position_componants_together(int angle, std::array<int,2> tankPosition)
+{
+    std::array<int,2> position;
+    std::array<int,2> correction{calculate_correction_position(angle)};
+    position[0] = tankPosition[0] + image_half_size + correction[0];
+    position[1] = tankPosition[1] + image_half_size - correction[1];
+    return position;
+}
+
+std::array<int,2> Game::calculate_correction_position(int angle)
 {
     std::array<int,2> correction;
-    int image_half_size{50};
     if(angle>=0)
     {
         correction[0] = cos((90-angle)*3.14/180)*image_half_size;
@@ -86,41 +89,32 @@ std::array<int,2> Game::calculate_left_bullet_position(TankL* tank, int angle)
         correction[0] = -cos((90+angle)*3.14/180)*image_half_size;
         correction[1] = sin((90+angle)*3.14/180)*image_half_size;
     }
-
-
-    std::array<int,2> position;
-    std::array<int,2> tankPosition{tank->get_position()};
-    position[0] = tankPosition[0] + image_half_size + correction[0];
-    position[1] = tankPosition[1] + image_half_size - correction[1];
-    return position;
+    return correction;
 }
 
-std::array<int,2> Game::calculate_right_bullet_position(TankR* tank, int angle)
+void Game::add_tanks_to_screen()
 {
-    std::array<int,2> correction;
-    int image_half_size{50};
-    if(angle>=0)
-    {
-        correction[0] = cos((90-angle)*3.14/180)*image_half_size;
-        correction[1] = sin((90-angle)*3.14/180)*image_half_size;
-    }
-    else
-    {
-        correction[0] = -cos((90+angle)*3.14/180)*image_half_size;
-        correction[1] = sin((90+angle)*3.14/180)*image_half_size;
-    }
+    scene->addItem(tank);
+    scene->addItem(tank2);
+    scene->addItem(barrel);
+    scene->addItem(barrel2);
+}
 
+std::array<int,2> Game::calculate_left_bullet_position(int angle)
+{
 
-    std::array<int,2> position;
     std::array<int,2> tankPosition{tank->get_position()};
-    position[0] = tankPosition[0] + image_half_size + correction[0];
-    position[1] = tankPosition[1] + image_half_size - correction[1];
-    return position;
+    return add_bullet_position_componants_together(angle,tankPosition);
+}
+
+std::array<int,2> Game::calculate_right_bullet_position(int angle)
+{
+    std::array<int,2> tankPosition{tank2->get_position()};
+    return add_bullet_position_componants_together(angle,tankPosition);
 }
 
 void Game::bullet_move()
 {
-    qDebug()<<"Test";
     double bulletPosition = bullet->move();
     if(bulletPosition>=425)
     {
@@ -162,7 +156,6 @@ void Game::bullet_move()
             scene->removeItem(collisions[i]);
             scene->removeItem(bullet);
             delete collisions[i];
-            qDebug()<<"Game Trigger";
 //            delete bullet;
             return;
         }

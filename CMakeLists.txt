@@ -68,6 +68,8 @@ add_executable(Unit_Tests
     calculate_new_velocity.cpp
     calculate_new_position.cpp
     calculate_vector_velocity.cpp
+    calculate_correction_position_from_game_class.cpp
+    add_bullet_position_componants_together_from_game_class.cpp
     )
 
 target_link_libraries(Unit_Tests

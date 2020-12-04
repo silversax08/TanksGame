@@ -20,12 +20,12 @@ void GameVisual::fire_bullet()
 {
     if(playerNumber == 1)
     {
-        game->left_tank_fire(velocity,angle);
+        game->tank_fire(velocity,angle,1);
         playerNumber = 2;
     }
     else if(playerNumber == 2)
     {
-        game->right_tank_fire(velocity,angle);
+        game->tank_fire(velocity,angle,2);
         playerNumber = 1;
     }
 }
