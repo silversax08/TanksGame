@@ -29,8 +29,8 @@ private:
     int velocity{0};
     int angle{0};
     Bullet* bullet;
-    TankL* tank{new TankL(tank1Position[0],tank1Position[1],1)};
-    TankR* tank2{new TankR(tank2Position[0],tank2Position[1],2)};
+    TankL* tank{new TankL(tank1Position[0],tank1Position[1])};
+    TankR* tank2{new TankR(tank2Position[0],tank2Position[1])};
     BarrelL* barrel{new BarrelL(tank1Position[0],tank1Position[1])};
     BarrelR* barrel2{new BarrelR(tank2Position[0],tank2Position[1])};
     std::array<int,2> calculate_left_bullet_position(TankL* tank, int angle);

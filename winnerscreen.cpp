@@ -1,7 +1,6 @@
 #include "winnerscreen.h"
 #include "ui_winnerscreen.h"
 #include <QPainter>
-#include <QPaintEvent>
 
 WinnerScreen::WinnerScreen(QWidget *parent, int winningTank) :
     QWidget(parent),

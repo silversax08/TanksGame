@@ -1,15 +1,12 @@
 #include "TankL.h"
-#include <QKeyEvent>
-#include <QDebug>
 #include <array>
 
-TankL::TankL(int inputXPos, int inputYPos, int tankId)
+TankL::TankL(int inputXPos, int inputYPos)
 {
     xPos = inputXPos;
     yPos = inputYPos;
     setPixmap(QPixmap(":/myicons/LittleTank3.png"));
     setPos(xPos,yPos);
-
 }
 
 std::array<int,2> TankL::get_position()
@@ -17,14 +14,11 @@ std::array<int,2> TankL::get_position()
     return{xPos,yPos};
 }
 
-void TankL::move_tank_left()
+void TankL::move_tank(int direction)
 {
-    xPos = xPos - 10;
-    setPos(xPos,yPos);
-}
-
-void TankL::move_tank_right()
-{
-    xPos = xPos + 10;
+    if(direction==1)
+        xPos = xPos - 10;
+    else
+        xPos = xPos + 10;
     setPos(xPos,yPos);
 }

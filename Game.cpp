@@ -22,13 +22,13 @@ void Game::move_left_tank(std::string direction)
 {
     if(direction == "Left")
     {
-        tank->move_tank_left();
-        barrel->move_barrel_left();
+        tank->move_tank(1);
+        barrel->move_barrel(1);
     }
     else
     {
-        tank->move_tank_right();
-        barrel->move_barrel_right();
+        tank->move_tank(2);
+        barrel->move_barrel(2);
     }
 }
 
@@ -36,13 +36,13 @@ void Game::move_right_tank(std::string direction)
 {
     if(direction == "Left")
     {
-        tank2->move_tank_left();
-        barrel2->move_barrel_left();
+        tank2->move_tank(1);
+        barrel2->move_barrel(1);
     }
     else
     {
-        tank2->move_tank_right();
-        barrel2->move_barrel_left();
+        tank2->move_tank(2);
+        barrel2->move_barrel(2);
     }
 }
 

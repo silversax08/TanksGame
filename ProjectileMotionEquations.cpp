@@ -4,11 +4,8 @@ std::array<double,2> utility::calculate_new_velocity(std::array<double,2> oldVel
 {
     std::array<double,2> newVelocity;
 
-//    for (size_t i{0}; i < newVelocity.size(); i++)
-//    {
-        newVelocity[0] = oldVelocity[0]+newAcceleration[0]*deltaT;
-        newVelocity[1] = oldVelocity[1]-newAcceleration[1]*deltaT;
-//    }
+    newVelocity[0] = oldVelocity[0]+newAcceleration[0]*deltaT;
+    newVelocity[1] = oldVelocity[1]-newAcceleration[1]*deltaT;
 
     return newVelocity;
 }

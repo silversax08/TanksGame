@@ -1,7 +1,4 @@
 #include "BarrelR.h"
-#include <QKeyEvent>
-#include <QDebug>
-#include <array>
 
 BarrelR::BarrelR(int inputXPos, int inputYPos)
 {
@@ -12,15 +9,12 @@ BarrelR::BarrelR(int inputXPos, int inputYPos)
     setTransformOriginPoint(0,0);
 }
 
-void BarrelR::move_barrel_left()
+void BarrelR::move_barrel(int direction)
 {
-    xPos = xPos - 10;
-    setPos(xPos,yPos);
-}
-
-void BarrelR::move_barrel_right()
-{
-    xPos = xPos + 10;
+    if(direction==1)
+        xPos = xPos - 10;
+    else
+        xPos = xPos + 10;
     setPos(xPos,yPos);
 }
 

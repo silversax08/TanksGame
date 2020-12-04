@@ -16,13 +16,6 @@ MainWindow::MainWindow(QWidget *parent) :
     mMainWindowUI{new Ui::MainWindowForm}
 {
     mMainWindowUI->setupUi(this);
-//    game = new Game(scene);
-//    gameVisual->setFocusPolicy(Qt::StrongFocus);
-
-//    gameVisual->scene=this->scene;
-//    gameVisual->setScene();
-//    scene->setSceneRect(0,0,550,525);
-//    gameVisual->hide();
     StartScreen* startScreen{new StartScreen(this)};
     this->setCentralWidget(startScreen);
     connect(startScreen,SIGNAL(startButton_clicked()),SLOT(on_StartButton_clicked()));

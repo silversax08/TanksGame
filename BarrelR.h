@@ -7,8 +7,7 @@ class BarrelR : public QGraphicsPixmapItem
 {
 public:
     BarrelR(int inputXPos, int inputYPos);
-    void move_barrel_left();
-    void move_barrel_right();
+    void move_barrel(int direction);
     void rotate_barrel(int inputAngle);
 
 private:

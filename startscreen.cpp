@@ -1,7 +1,5 @@
 #include "startscreen.h"
 #include "ui_startscreen.h"
-#include "TankL.h"
-#include <array>
 
 StartScreen::StartScreen(QWidget *parent) :
     QWidget(parent),

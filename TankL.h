@@ -6,10 +6,9 @@
 class TankL : public QGraphicsPixmapItem
 {
 public:
-    TankL(int inputXPos, int inputYPos, int tankId);
+    TankL(int inputXPos, int inputYPos);
     std::array<int,2> get_position();
-    void move_tank_left();
-    void move_tank_right();
+    void move_tank(int direction);
 
 private:
     int xPos{250};
