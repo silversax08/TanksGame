@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include <QGraphicsScene>
-#include <QKeyEvent>
 #include "Game.h"
 
 namespace Ui {
@@ -18,10 +17,12 @@ public:
     explicit GameVisual(QWidget *parent = nullptr);
     ~GameVisual();
     Ui::GameVisual *ui;
-    void set_scene();
     Game* game;
 
 private:
+    void fire_bullet();
+    void rotate_barrel();
+    void move_tank(std::string direction);
     QGraphicsScene* scene{new QGraphicsScene};
     int velocity{10};
     int angle{0};
