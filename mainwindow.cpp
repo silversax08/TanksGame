@@ -8,6 +8,7 @@
 #include "Bullet.h"
 #include "Game.h"
 #include "winnerscreen.h"
+#include "Ground.h"
 #include <QGraphicsView>
 #include <QKeyEvent>
 

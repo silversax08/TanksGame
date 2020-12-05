@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtCore>
+#include "Ground.h"
 
 namespace Ui {
 class MainWindowForm;
