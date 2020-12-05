@@ -10,8 +10,6 @@ public:
     std::array<int,2> get_position();
     void move_tank(std::string direction);
     int xPos{250};
-
-private:
     int yPos{250};
 };
 

@@ -13,14 +13,35 @@ void Game::move_tank(std::string direction, int idNumber)
 {
     if(idNumber==1)
     {
-//        tank->move_tank(direction);
-        tank->setPos(tank->xPos+10,100);
-        barrel->move_barrel(direction);
+        if(direction=="Left")
+        {
+            tank->xPos = tank->xPos-10;
+            barrel->xPos = barrel->xPos-10;
+        }
+        else
+        {
+            tank->xPos = tank->xPos+10;
+            barrel->xPos = barrel->xPos+10;
+        }
+        tank->yPos = find_tank_vertical_position(tank->xPos);
+        tank->setPos(tank->xPos,tank->yPos);
+        barrel->setPos(barrel->xPos,find_tank_vertical_position(barrel->xPos));
     }
     else
     {
-        tank2->move_tank(direction);
-        barrel2->move_barrel(direction);
+        if(direction=="Left")
+        {
+            tank2->xPos = tank2->xPos-10;
+            barrel2->xPos = barrel2->xPos-10;
+        }
+        else
+        {
+            tank2->xPos = tank2->xPos+10;
+            barrel2->xPos = barrel2->xPos+10;
+        }
+        tank2->yPos = find_tank_vertical_position(tank2->xPos);
+        tank2->setPos(tank2->xPos,tank2->yPos);
+        barrel2->setPos(barrel2->xPos,find_tank_vertical_position(barrel2->xPos));
     }
 }
 
@@ -77,17 +98,15 @@ std::array<int,2> Game::calculate_bullet_position(int angle,int tankNumber)
 void Game::bullet_move()
 {
     double bulletPosition = bullet->move();
-    if(bulletPosition>=425)
-    {
-        scene->removeItem(bullet);
-        delete bullet;
-        timer->stop();
-        return;
-    }
 
     QList<QGraphicsItem*> collisions{bullet->collidingItems()};
     for(int i = 0, n = collisions.size(); i < n; ++i)
     {
+        if(typeid(*(collisions[i])) == typeid(TankR))
+        {
+            scene->removeItem(bullet);
+            delete bullet;
+        }
         if(typeid(*(collisions[i])) == typeid(TankL)||typeid(*(collisions[i])) == typeid(TankR)||typeid(*(collisions[i])) == typeid(BarrelL)||typeid(*(collisions[i])) == typeid(BarrelR))
         {
             if(typeid(*(collisions[i])) == typeid(TankL))
@@ -117,7 +136,7 @@ void Game::bullet_move()
             scene->removeItem(collisions[i]);
             scene->removeItem(bullet);
             delete collisions[i];
-//            delete bullet;
+            delete bullet;
             return;
         }
     }

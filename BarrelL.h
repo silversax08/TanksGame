@@ -9,9 +9,9 @@ public:
     BarrelL(int inputXPos, int inputYPos);
     void move_barrel(std::string direction);
     void rotate_barrel(int inputAngle);
+    int xPos{250};
 
 private:
-    int xPos{250};
     int yPos{250};
 };
 
