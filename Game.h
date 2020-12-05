@@ -21,8 +21,8 @@ public:
 
 private:
     QGraphicsScene* scene;
-    std::array<int,2> tank1Position{50,350};
-    std::array<int,2> tank2Position{450,350};
+    std::array<int,2> tank1Position;
+    std::array<int,2> tank2Position;
     Bullet* bullet;
     TankL* tank{new TankL(tank1Position[0],tank1Position[1])};
     TankR* tank2{new TankR(tank2Position[0],tank2Position[1])};
@@ -30,6 +30,8 @@ private:
     BarrelR* barrel2{new BarrelR(tank2Position[0],tank2Position[1])};
     Ground* ground{new Ground};
     std::array<int,2> calculate_bullet_position(int angle, int tankNumber);
+    void initialize_tanks();
+    int find_tank_vertical_position(int xPoint);
     void add_tanks_to_screen();
     int deltaT{50};
     QTimer* timer{new QTimer()};

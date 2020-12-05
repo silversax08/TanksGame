@@ -4,6 +4,7 @@
 Game::Game(QGraphicsScene *inputScene)
 {
     scene = inputScene;
+    initialize_tanks();
     add_tanks_to_screen();
     connect(timer,SIGNAL(timeout()),this,SLOT(bullet_move()));
 }
@@ -12,7 +13,8 @@ void Game::move_tank(std::string direction, int idNumber)
 {
     if(idNumber==1)
     {
-        tank->move_tank(direction);
+//        tank->move_tank(direction);
+        tank->setPos(tank->xPos+10,100);
         barrel->move_barrel(direction);
     }
     else
@@ -36,6 +38,21 @@ void Game::tank_fire(int velocity,int angle, int playerNumber)
     bullet->setRect(-10,0,5,5);
     scene->addItem(bullet);
     timer->start(deltaT);
+}
+
+void Game::initialize_tanks()
+{
+    tank1Position = {50,find_tank_vertical_position(50)};
+    tank2Position = {450,find_tank_vertical_position(450)};
+    tank = new TankL(tank1Position[0],tank1Position[1]);
+    tank2 = new TankR(tank2Position[0],tank2Position[1]);
+    barrel = new BarrelL(tank1Position[0],tank1Position[1]);
+    barrel2 = new BarrelR(tank2Position[0],tank2Position[1]);
+}
+
+int Game::find_tank_vertical_position(int xPoint)
+{
+    return ground->return_height_at_point(xPoint)-60;
 }
 
 void Game::add_tanks_to_screen()
