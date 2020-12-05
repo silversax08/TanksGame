@@ -99,7 +99,6 @@ void Game::bullet_move()
             scene->removeItem(collisions[i]);
             scene->removeItem(bullet);
             delete collisions[i];
-//            delete bullet;
             return;
         }
     }
