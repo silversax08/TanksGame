@@ -40,6 +40,7 @@ void Game::tank_fire(int velocity,int angle, int playerNumber)
 
 void Game::add_tanks_to_screen()
 {
+    scene->addItem(ground);
     scene->addItem(tank);
     scene->addItem(tank2);
     scene->addItem(barrel);

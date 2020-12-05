@@ -57,6 +57,8 @@ add_executable(${PROJECT_NAME}
     winnerscreen.h
     winnerscreen.cpp
     winnerscreen.ui
+    Ground.h
+    Ground.cpp
     ${MYRESOURCES}
 )
 

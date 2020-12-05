@@ -8,6 +8,7 @@
 #include "BarrelL.h"
 #include "BarrelR.h"
 #include "Bullet.h"
+#include "Ground.h"
 
 class Game : public QObject
 { 
@@ -27,6 +28,7 @@ private:
     TankR* tank2{new TankR(tank2Position[0],tank2Position[1])};
     BarrelL* barrel{new BarrelL(tank1Position[0],tank1Position[1])};
     BarrelR* barrel2{new BarrelR(tank2Position[0],tank2Position[1])};
+    Ground* ground{new Ground};
     std::array<int,2> calculate_bullet_position(int angle, int tankNumber);
     void add_tanks_to_screen();
     int deltaT{50};
