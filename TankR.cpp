@@ -22,3 +22,9 @@ void TankR::move_tank(std::string direction)
         xPos = xPos + 10;
     setPos(xPos,yPos);
 }
+
+void TankR::roate_tank(int inputAngle)
+{
+    setTransformOriginPoint(50,50);
+    setRotation(inputAngle);
+}

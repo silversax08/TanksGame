@@ -15,7 +15,7 @@ private:
     void create_ground_path();
     void set_brush_and_pen();
 //    int groundSelection{rand() % 4 + 1};
-    int groundSelection{4};
+    int groundSelection{1};
     QPolygon ground;
     int graphicsViewWidth{616};
     int graphicsViewHeight{578};

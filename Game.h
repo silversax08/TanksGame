@@ -33,6 +33,7 @@ private:
     void initialize_tanks();
     int find_tank_vertical_position(int xPoint);
     void add_tanks_to_screen();
+    void rotate_tanks_with_landscape(int xPos, int playerNumber);
     int deltaT{50};
     QTimer* timer{new QTimer()};
     int counter{0};

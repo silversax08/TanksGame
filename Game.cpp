@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "GameFunctions.h"
+#include <QDebug>
 
 Game::Game(QGraphicsScene *inputScene)
 {
@@ -23,9 +24,10 @@ void Game::move_tank(std::string direction, int idNumber)
             tank->xPos = tank->xPos+10;
             barrel->xPos = barrel->xPos+10;
         }
-        tank->yPos = find_tank_vertical_position(tank->xPos);
+        tank->yPos = find_tank_vertical_position(tank->xPos+50);
         tank->setPos(tank->xPos,tank->yPos);
-        barrel->setPos(barrel->xPos,find_tank_vertical_position(barrel->xPos));
+        barrel->setPos(barrel->xPos,find_tank_vertical_position(barrel->xPos+50));
+        rotate_tanks_with_landscape(tank->xPos,idNumber);
     }
     else
     {
@@ -39,10 +41,12 @@ void Game::move_tank(std::string direction, int idNumber)
             tank2->xPos = tank2->xPos+10;
             barrel2->xPos = barrel2->xPos+10;
         }
-        tank2->yPos = find_tank_vertical_position(tank2->xPos);
+        tank2->yPos = find_tank_vertical_position(tank2->xPos+50);
         tank2->setPos(tank2->xPos,tank2->yPos);
-        barrel2->setPos(barrel2->xPos,find_tank_vertical_position(barrel2->xPos));
+        barrel2->setPos(barrel2->xPos,find_tank_vertical_position(barrel2->xPos+50));
+        rotate_tanks_with_landscape(tank2->xPos,idNumber);
     }
+
 }
 
 void Game::rotate_barrel(int angle, int idNumber)
@@ -63,8 +67,10 @@ void Game::tank_fire(int velocity,int angle, int playerNumber)
 
 void Game::initialize_tanks()
 {
-    tank1Position = {50,find_tank_vertical_position(50)};
-    tank2Position = {450,find_tank_vertical_position(450)};
+    tank1Position = {50,find_tank_vertical_position(100)};
+    rotate_tanks_with_landscape(50,1);
+    tank2Position = {450,find_tank_vertical_position(500)};
+    rotate_tanks_with_landscape(450,2);
     tank = new TankL(tank1Position[0],tank1Position[1]);
     tank2 = new TankR(tank2Position[0],tank2Position[1]);
     barrel = new BarrelL(tank1Position[0],tank1Position[1]);
@@ -85,6 +91,25 @@ void Game::add_tanks_to_screen()
     scene->addItem(barrel2);
 }
 
+void Game::rotate_tanks_with_landscape(int xPos, int playerNumber)
+{
+    int dX = 50;
+    int xPoint1 = xPos+2*dX;
+    int yPoint1 = find_tank_vertical_position(xPoint1);
+    qDebug()<<yPoint1;
+    double xPoint2 = xPos;
+    double yPoint2 = find_tank_vertical_position(xPoint2);
+    qDebug()<<yPoint2;
+    double radianAngle = atan((yPoint1-yPoint2)/(2*dX));
+    qDebug()<<radianAngle;
+    int angle = 180*radianAngle/3.14;
+
+    if(playerNumber==1)
+        tank->roate_tank(angle);
+    else
+        tank2->roate_tank(angle);
+}
+
 std::array<int,2> Game::calculate_bullet_position(int angle,int tankNumber)
 {
     std::array<int,2> tankPosition;
@@ -102,10 +127,10 @@ void Game::bullet_move()
     QList<QGraphicsItem*> collisions{bullet->collidingItems()};
     for(int i = 0, n = collisions.size(); i < n; ++i)
     {
-        if(typeid(*(collisions[i])) == typeid(TankR))
+        if(typeid(*(collisions[i])) == typeid(Ground))
         {
             scene->removeItem(bullet);
-            delete bullet;
+//            delete bullet;
         }
         if(typeid(*(collisions[i])) == typeid(TankL)||typeid(*(collisions[i])) == typeid(TankR)||typeid(*(collisions[i])) == typeid(BarrelL)||typeid(*(collisions[i])) == typeid(BarrelR))
         {

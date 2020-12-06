@@ -37,13 +37,13 @@ void GameVisual::rotate_barrel()
 
 void GameVisual::move_tank(std::string direction)
 {
-    if(moveCount<=maxMovementPerTurn)
-    {
+//    if(moveCount<=maxMovementPerTurn)
+//    {
         game->move_tank(direction,playerNumber);
         moveCount++;
         return;
-    }
-    else
+//    }
+//    else
         return;
 }
 
