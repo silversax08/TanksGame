@@ -68,18 +68,18 @@ void Game::tank_fire(int velocity,int angle, int playerNumber)
 void Game::initialize_tanks()
 {
     tank1Position = {50,find_tank_vertical_position(100)};
-    rotate_tanks_with_landscape(50,1);
     tank2Position = {450,find_tank_vertical_position(500)};
-    rotate_tanks_with_landscape(450,2);
     tank = new TankL(tank1Position[0],tank1Position[1]);
     tank2 = new TankR(tank2Position[0],tank2Position[1]);
     barrel = new BarrelL(tank1Position[0],tank1Position[1]);
     barrel2 = new BarrelR(tank2Position[0],tank2Position[1]);
+    rotate_tanks_with_landscape(50,1);
+    rotate_tanks_with_landscape(450,2);
 }
 
 int Game::find_tank_vertical_position(int xPoint)
 {
-    return ground->return_height_at_point(xPoint)-60;
+    return ground->return_height_at_point(xPoint)-70;
 }
 
 void Game::add_tanks_to_screen()
@@ -122,7 +122,7 @@ std::array<int,2> Game::calculate_bullet_position(int angle,int tankNumber)
 
 void Game::bullet_move()
 {
-    double bulletPosition = bullet->move();
+    bullet->move();
 
     QList<QGraphicsItem*> collisions{bullet->collidingItems()};
     for(int i = 0, n = collisions.size(); i < n; ++i)
@@ -161,7 +161,7 @@ void Game::bullet_move()
             scene->removeItem(collisions[i]);
             scene->removeItem(bullet);
             delete collisions[i];
-            delete bullet;
+//            delete bullet;
             return;
         }
     }
