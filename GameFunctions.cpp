@@ -31,15 +31,3 @@ double GameFunctions::convert_degrees_to_radians(int angle)
         radians = (90+angle)*3.14/180;
     return radians;
 }
-
-//int GameFunctions::rotate_tanks_with_landscape(int xPos, int playerNumber)
-//{
-//    int dX = 50;
-//    int xPoint1 = xPos+2*dX;
-//    int yPoint1 = find_tank_vertical_position(xPoint1);
-//    double xPoint2 = xPos;
-//    double yPoint2 = find_tank_vertical_position(xPoint2);
-//    double radianAngle = atan((yPoint1-yPoint2)/(2*dX));
-//    int angle = 180*radianAngle/3.14;
-//    return angle;
-//}
