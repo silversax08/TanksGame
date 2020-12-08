@@ -9,6 +9,7 @@ GameVisual::GameVisual(QWidget *parent) :
     game = new Game(scene);
     scene->setSceneRect(20,0,550,525);
     ui->graphicsView2->setScene(scene);
+    set_turn_text();
 }
 
 GameVisual::~GameVisual()
@@ -28,11 +29,20 @@ void GameVisual::fire_bullet()
         game->tank_fire(velocity,angle,2);
         playerNumber = 1;
     }
+    set_turn_text();
 }
 
 void GameVisual::rotate_barrel()
 {
-        game->rotate_barrel(angle,playerNumber);
+    game->rotate_barrel(angle,playerNumber);
+}
+
+void GameVisual::set_turn_text()
+{
+    if(playerNumber==1)
+        ui->label->setText("Turn: Left Tank");
+    else
+        ui->label->setText("Turn: Right Tank");
 }
 
 void GameVisual::move_tank(std::string direction)

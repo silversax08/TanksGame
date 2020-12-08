@@ -16,34 +16,34 @@ void Game::move_tank(std::string direction, int idNumber)
     {
         if(direction=="Left")
         {
-            tank->xPos = tank->xPos-10;
-            barrel->xPos = barrel->xPos-10;
+            tank->xPos = tank->xPos-oneMove;
+            barrel->xPos = barrel->xPos-oneMove;
         }
         else
         {
-            tank->xPos = tank->xPos+10;
-            barrel->xPos = barrel->xPos+10;
+            tank->xPos = tank->xPos+oneMove;
+            barrel->xPos = barrel->xPos+oneMove;
         }
-        tank->yPos = find_tank_vertical_position(tank->xPos+50);
+        tank->yPos = find_tank_vertical_position(tank->xPos+xPositionCorrection);
         tank->setPos(tank->xPos,tank->yPos);
-        barrel->setPos(barrel->xPos,find_tank_vertical_position(barrel->xPos+50));
+        barrel->setPos(barrel->xPos,find_tank_vertical_position(barrel->xPos+xPositionCorrection));
         rotate_tanks_with_landscape(tank->xPos,idNumber);
     }
     else
     {
         if(direction=="Left")
         {
-            tank2->xPos = tank2->xPos-10;
-            barrel2->xPos = barrel2->xPos-10;
+            tank2->xPos = tank2->xPos-oneMove;
+            barrel2->xPos = barrel2->xPos-oneMove;
         }
         else
         {
-            tank2->xPos = tank2->xPos+10;
-            barrel2->xPos = barrel2->xPos+10;
+            tank2->xPos = tank2->xPos+oneMove;
+            barrel2->xPos = barrel2->xPos+oneMove;
         }
-        tank2->yPos = find_tank_vertical_position(tank2->xPos+50);
+        tank2->yPos = find_tank_vertical_position(tank2->xPos+xPositionCorrection);
         tank2->setPos(tank2->xPos,tank2->yPos);
-        barrel2->setPos(barrel2->xPos,find_tank_vertical_position(barrel2->xPos+50));
+        barrel2->setPos(barrel2->xPos,find_tank_vertical_position(barrel2->xPos+xPositionCorrection));
         rotate_tanks_with_landscape(tank2->xPos,idNumber);
     }
 
@@ -65,16 +65,27 @@ void Game::tank_fire(int velocity,int angle, int playerNumber)
     timer->start(deltaT);
 }
 
+int Game::calculate_tank_rotation_angle(int xPos)
+{
+    int dX = 50;
+    int xPoint1 = xPos+2*dX;
+    int yPoint1 = find_tank_vertical_position(xPoint1);
+    double xPoint2 = xPos;
+    double yPoint2 = find_tank_vertical_position(xPoint2);
+    double radianAngle = atan((yPoint1-yPoint2)/(2*dX));
+    return 180*radianAngle/3.14;
+}
+
 void Game::initialize_tanks()
 {
-    tank1Position = {50,find_tank_vertical_position(100)};
-    tank2Position = {450,find_tank_vertical_position(500)};
-    tank = new TankL(tank1Position[0],tank1Position[1]);
-    tank2 = new TankR(tank2Position[0],tank2Position[1]);
-    barrel = new BarrelL(tank1Position[0],tank1Position[1]);
-    barrel2 = new BarrelR(tank2Position[0],tank2Position[1]);
-    rotate_tanks_with_landscape(50,1);
-    rotate_tanks_with_landscape(450,2);
+    int tankOneStartingPosition{50};
+    int tankTwoStartingPosition{450};
+    tank = new TankL(tankOneStartingPosition,find_tank_vertical_position(tankOneStartingPosition + xPositionCorrection));
+    tank2 = new TankR(tankTwoStartingPosition,find_tank_vertical_position(tankTwoStartingPosition + xPositionCorrection));
+    barrel = new BarrelL(tankOneStartingPosition,find_tank_vertical_position(tankOneStartingPosition + xPositionCorrection));
+    barrel2 = new BarrelR(tankTwoStartingPosition,find_tank_vertical_position(tankTwoStartingPosition + xPositionCorrection));
+    rotate_tanks_with_landscape(tankOneStartingPosition,1);
+    rotate_tanks_with_landscape(tankTwoStartingPosition,2);
 }
 
 int Game::find_tank_vertical_position(int xPoint)
@@ -93,16 +104,7 @@ void Game::add_tanks_to_screen()
 
 void Game::rotate_tanks_with_landscape(int xPos, int playerNumber)
 {
-    int dX = 50;
-    int xPoint1 = xPos+2*dX;
-    int yPoint1 = find_tank_vertical_position(xPoint1);
-    qDebug()<<yPoint1;
-    double xPoint2 = xPos;
-    double yPoint2 = find_tank_vertical_position(xPoint2);
-    qDebug()<<yPoint2;
-    double radianAngle = atan((yPoint1-yPoint2)/(2*dX));
-    qDebug()<<radianAngle;
-    int angle = 180*radianAngle/3.14;
+    int angle{calculate_tank_rotation_angle(xPos)};
 
     if(playerNumber==1)
         tank->roate_tank(angle);

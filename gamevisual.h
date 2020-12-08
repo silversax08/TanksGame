@@ -27,9 +27,10 @@ private:
     QGraphicsScene* scene{new QGraphicsScene};
     int velocity{10};
     int angle{0};
-    int playerNumber{1};
+    int playerNumber{rand() % 2+1};
     int moveCount{0};
     int maxMovementPerTurn{5};
+    void set_turn_text();
 
 private slots:
     void on_LaunchButton2_clicked();

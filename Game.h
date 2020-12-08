@@ -20,23 +20,23 @@ public:
     void tank_fire(int velocity,int angle, int playerNumber);
 
 private:
-    QGraphicsScene* scene;
-    std::array<int,2> tank1Position;
-    std::array<int,2> tank2Position;
-    Bullet* bullet;
-    TankL* tank{new TankL(tank1Position[0],tank1Position[1])};
-    TankR* tank2{new TankR(tank2Position[0],tank2Position[1])};
-    BarrelL* barrel{new BarrelL(tank1Position[0],tank1Position[1])};
-    BarrelR* barrel2{new BarrelR(tank2Position[0],tank2Position[1])};
-    Ground* ground{new Ground};
     std::array<int,2> calculate_bullet_position(int angle, int tankNumber);
+    int calculate_tank_rotation_angle(int xPos);
     void initialize_tanks();
     int find_tank_vertical_position(int xPoint);
     void add_tanks_to_screen();
     void rotate_tanks_with_landscape(int xPos, int playerNumber);
+    QGraphicsScene* scene;
+    Bullet* bullet;
+    TankL* tank;
+    TankR* tank2;
+    BarrelL* barrel;
+    BarrelR* barrel2;
+    Ground* ground{new Ground};
     int deltaT{50};
+    int oneMove{10};
+    int xPositionCorrection{50};
     QTimer* timer{new QTimer()};
-    int counter{0};
 
 signals:
     void tank1_hit();
