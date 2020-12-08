@@ -11,10 +11,11 @@ BarrelL::BarrelL(int inputXPos, int inputYPos)
 
 void BarrelL::move_barrel(std::string direction)
 {
+    int stepSize{10};
     if(direction=="Left")
-        xPos = xPos - 10;
+        xPos = xPos - stepSize;
     else
-        xPos = xPos + 10;
+        xPos = xPos + stepSize;
     setPos(xPos,yPos);
 }
 
