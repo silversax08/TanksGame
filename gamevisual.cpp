@@ -20,16 +20,11 @@ GameVisual::~GameVisual()
 
 void GameVisual::fire_bullet()
 {
+    game->tank_fire(velocity,angle);
     if(playerNumber == 1)
-    {
-        game->tank_fire(velocity,angle);
         playerNumber = 2;
-    }
-    else if(playerNumber == 2)
-    {
-        game->tank_fire(velocity,angle);
+    else
         playerNumber = 1;
-    }
     set_turn_text();
     game->set_active_tank(playerNumber);
 }
