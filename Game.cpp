@@ -68,16 +68,12 @@ void Game::tank_fire(int velocity,int angle, int playerNumber)
 int Game::calculate_tank_rotation_angle(int xPos)
 {
     int dX{100};
+    double radianToDegreeConversion{180/3.14};
+
     double point1YPos{find_tank_vertical_position(xPos+dX)};
-//    int xPoint1 = xPos+dX;
-//    int yPoint1 = find_tank_vertical_position(xPoint1);
     double point2YPos{find_tank_vertical_position(xPos)};
-//    double xPoint2 = xPos;
-//    double yPoint2 = find_tank_vertical_position(xPoint2);
-    double pi{3.14};
-    double radianToDegreeConversion{180/pi};
-    double angle = radianToDegreeConversion*atan((point1YPos-point2YPos)/(dX));
-    return angle;
+
+    return radianToDegreeConversion*atan((point1YPos-point2YPos)/(dX));
 }
 
 void Game::initialize_tanks()
