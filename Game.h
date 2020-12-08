@@ -23,7 +23,7 @@ private:
     std::array<int,2> calculate_bullet_position(int angle, int tankNumber);
     int calculate_tank_rotation_angle(int xPos);
     void initialize_tanks();
-    int find_tank_vertical_position(int xPoint);
+    double find_tank_vertical_position(int xPoint);
     void add_tanks_to_screen();
     void rotate_tanks_with_landscape(int xPos, int playerNumber);
     QGraphicsScene* scene;

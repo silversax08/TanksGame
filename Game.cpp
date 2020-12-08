@@ -67,13 +67,17 @@ void Game::tank_fire(int velocity,int angle, int playerNumber)
 
 int Game::calculate_tank_rotation_angle(int xPos)
 {
-    int dX = 50;
-    int xPoint1 = xPos+2*dX;
-    int yPoint1 = find_tank_vertical_position(xPoint1);
-    double xPoint2 = xPos;
-    double yPoint2 = find_tank_vertical_position(xPoint2);
-    double radianAngle = atan((yPoint1-yPoint2)/(2*dX));
-    return 180*radianAngle/3.14;
+    int dX{100};
+    double point1YPos{find_tank_vertical_position(xPos+dX)};
+//    int xPoint1 = xPos+dX;
+//    int yPoint1 = find_tank_vertical_position(xPoint1);
+    double point2YPos{find_tank_vertical_position(xPos)};
+//    double xPoint2 = xPos;
+//    double yPoint2 = find_tank_vertical_position(xPoint2);
+    double pi{3.14};
+    double radianToDegreeConversion{180/pi};
+    double angle = radianToDegreeConversion*atan((point1YPos-point2YPos)/(dX));
+    return angle;
 }
 
 void Game::initialize_tanks()
@@ -88,9 +92,10 @@ void Game::initialize_tanks()
     rotate_tanks_with_landscape(tankTwoStartingPosition,2);
 }
 
-int Game::find_tank_vertical_position(int xPoint)
+double Game::find_tank_vertical_position(int xPoint)
 {
-    return ground->return_height_at_point(xPoint)-70;
+    int correctionHeight{-70};
+    return ground->return_height_at_point(xPoint)+correctionHeight;
 }
 
 void Game::add_tanks_to_screen()
@@ -132,7 +137,6 @@ void Game::bullet_move()
         if(typeid(*(collisions[i])) == typeid(Ground))
         {
             scene->removeItem(bullet);
-//            delete bullet;
         }
         if(typeid(*(collisions[i])) == typeid(TankL)||typeid(*(collisions[i])) == typeid(TankR)||typeid(*(collisions[i])) == typeid(BarrelL)||typeid(*(collisions[i])) == typeid(BarrelR))
         {
@@ -163,7 +167,6 @@ void Game::bullet_move()
             scene->removeItem(collisions[i]);
             scene->removeItem(bullet);
             delete collisions[i];
-//            delete bullet;
             return;
         }
     }
