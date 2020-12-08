@@ -7,6 +7,7 @@ GameVisual::GameVisual(QWidget *parent) :
 {
     ui->setupUi(this);
     game = new Game(scene);
+    game->set_active_tank(playerNumber);
     scene->setSceneRect(20,0,550,525);
     ui->graphicsView2->setScene(scene);
     set_turn_text();
@@ -21,20 +22,21 @@ void GameVisual::fire_bullet()
 {
     if(playerNumber == 1)
     {
-        game->tank_fire(velocity,angle,1);
+        game->tank_fire(velocity,angle);
         playerNumber = 2;
     }
     else if(playerNumber == 2)
     {
-        game->tank_fire(velocity,angle,2);
+        game->tank_fire(velocity,angle);
         playerNumber = 1;
     }
     set_turn_text();
+    game->set_active_tank(playerNumber);
 }
 
 void GameVisual::rotate_barrel()
 {
-    game->rotate_barrel(angle,playerNumber);
+    game->rotate_barrel(angle);
 }
 
 void GameVisual::set_turn_text()

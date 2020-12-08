@@ -1,5 +1,7 @@
 #include "Game.h"
 #include "GameFunctions.h"
+#include "Tank.h"
+#include "Barrel.h"
 
 Game::Game(QGraphicsScene *inputScene)
 {
@@ -11,53 +13,43 @@ Game::Game(QGraphicsScene *inputScene)
 
 void Game::move_tank(std::string direction, int playerNumber)
 {
-    int oneMove{10};
-    if(playerNumber==1)
-    {
-        if(direction=="Left")
-        {
-            tank->move_tank(tank->xPos-oneMove,find_tank_vertical_position(tank->xPos-oneMove+xPositionCorrection));
-            barrel->move_barrel(barrel->xPos-oneMove,find_tank_vertical_position(barrel->xPos-oneMove+xPositionCorrection));
-        }
-        else
-        {
-            tank->move_tank(tank->xPos+oneMove,find_tank_vertical_position(tank->xPos+oneMove+xPositionCorrection));
-            barrel->move_barrel(barrel->xPos+oneMove,find_tank_vertical_position(barrel->xPos+oneMove+xPositionCorrection));
-        }
-        rotate_tanks_with_landscape(tank->xPos,playerNumber);
-    }
+    int oneMove;
+    if(direction=="Left")
+        oneMove = -10;
     else
-    {
-        if(direction=="Left")
-        {
-            tank2->move_tank(tank2->xPos-oneMove,find_tank_vertical_position(tank2->xPos-oneMove+xPositionCorrection));
-            barrel2->move_barrel(barrel2->xPos-oneMove,find_tank_vertical_position(barrel2->xPos-oneMove+xPositionCorrection));
-        }
-        else
-        {
-            tank2->move_tank(tank2->xPos+oneMove,find_tank_vertical_position(tank2->xPos+oneMove+xPositionCorrection));
-            barrel2->move_barrel(barrel2->xPos+oneMove,find_tank_vertical_position(barrel2->xPos+oneMove+xPositionCorrection));
-        }
-        rotate_tanks_with_landscape(tank2->xPos,playerNumber);
-    }
+        oneMove = 10;
 
+    activeTank->move_tank(activeTank->xPos+oneMove,find_tank_vertical_position(activeTank->xPos+oneMove+xPositionCorrection));
+    activeBarrel->move_barrel(activeBarrel->xPos+oneMove,find_tank_vertical_position(activeBarrel->xPos+oneMove+xPositionCorrection));
+    rotate_tanks_with_landscape(activeTank->xPos,playerNumber);
 }
 
-void Game::rotate_barrel(int angle, int playerNumber)
+void Game::rotate_barrel(int angle)
 {
-    if(playerNumber==1)
-        barrel->rotate_barrel(angle);
-    else
-        barrel2->rotate_barrel(angle);
+    activeBarrel->rotate_barrel(angle);
 }
 
-void Game::tank_fire(int velocity,int angle, int playerNumber)
+void Game::tank_fire(int velocity,int angle)
 {
-    bullet = new Bullet(calculate_bullet_position(angle,playerNumber),velocity,angle);
+    bullet = new Bullet(GameFunctions::add_bullet_position_componants_together(angle,activeTank->get_position()),velocity,angle);
     bullet->setRect(-10,0,5,5);
     scene->addItem(bullet);
     int deltaT{50};
     timer->start(deltaT);
+}
+
+void Game::set_active_tank(int playerNumber)
+{
+    if(playerNumber==1)
+    {
+        activeTank = tank;
+        activeBarrel = barrel;
+    }
+    else
+    {
+        activeTank = tank2;
+        activeBarrel = barrel2;
+    }
 }
 
 int Game::calculate_tank_rotation_angle(int xPos)
@@ -106,16 +98,6 @@ void Game::rotate_tanks_with_landscape(int xPos, int playerNumber)
         tank->roate_tank(angle);
     else
         tank2->roate_tank(angle);
-}
-
-std::array<int,2> Game::calculate_bullet_position(int angle,int playerNumber)
-{
-    std::array<int,2> tankPosition;
-    if(playerNumber==1)
-        tankPosition = tank->get_position();
-    else
-        tankPosition = tank2->get_position();
-    return GameFunctions::add_bullet_position_componants_together(angle,tankPosition);
 }
 
 void Game::bullet_move()
