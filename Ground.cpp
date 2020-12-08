@@ -12,12 +12,14 @@ Ground::Ground()
 
 void Ground::create_ground_path()
 {
-    ground << QPoint(-30,startingHeight);
-    for(int i{-30};i<graphicsViewWidth;i++)
+    int startingXPoint{-30};
+    int endingYPoint{600};
+    ground << QPoint(startingXPoint,startingHeight);
+    for(int i{startingXPoint};i<graphicsViewWidth;i++)
     {
         ground << QPoint(i,return_height_at_point(i));
     }
-    ground << QPoint(graphicsViewWidth,600) << QPoint(-30,600) << QPoint(-30,startingHeight);
+    ground << QPoint(graphicsViewWidth,endingYPoint) << QPoint(startingXPoint,endingYPoint) << QPoint(startingXPoint,startingHeight);
 }
 
 void Ground::set_brush_and_pen()
