@@ -34,5 +34,5 @@ void WinnerScreen::on_playButton_clicked()
 
 void WinnerScreen::on_quitButton_clicked()
 {
-
+    QApplication::quit();
 }

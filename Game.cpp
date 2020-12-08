@@ -1,6 +1,5 @@
 #include "Game.h"
 #include "GameFunctions.h"
-#include <QDebug>
 
 Game::Game(QGraphicsScene *inputScene)
 {

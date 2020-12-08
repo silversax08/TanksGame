@@ -1,6 +1,5 @@
 #include "TankL.h"
 #include <array>
-#include <QDebug>
 
 TankL::TankL(int inputXPos, int inputYPos)
 {
@@ -26,7 +25,6 @@ void TankL::move_tank(std::string direction)
 
 void TankL::roate_tank(int inputAngle)
 {
-    qDebug()<<inputAngle;
     setTransformOriginPoint(50,50);
     setRotation(inputAngle);
 }

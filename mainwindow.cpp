@@ -1,15 +1,8 @@
 #include "mainwindow.h"
+#include "ui_mainwindowform.h"
 #include "startscreen.h"
 #include "gamevisual.h"
-#include "ui_mainwindowform.h"
-
-#include "TankL.h"
-#include "TankR.h"
-#include "Bullet.h"
-#include "Game.h"
 #include "winnerscreen.h"
-#include <QGraphicsView>
-#include <QKeyEvent>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow{parent},
