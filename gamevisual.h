@@ -17,14 +17,14 @@ public:
     explicit GameVisual(QWidget *parent = nullptr);
     ~GameVisual();
     Ui::GameVisual *ui;
-    Game* game;
+    Game *game;
 
 private:
     void move_tank(std::string direction);
-    QPixmap startScreen{QPixmap(":/myicons/startscreen.png")};
     void fire_bullet();
     void rotate_barrel();
-    QGraphicsScene* scene{new QGraphicsScene};
+    QPixmap startScreen{QPixmap(":/myicons/startscreen.png")};
+    QGraphicsScene *scene{new QGraphicsScene};
     int velocity{10};
     int angle{0};
     int playerNumber{rand() % 2+1};

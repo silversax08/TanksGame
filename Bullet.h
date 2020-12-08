@@ -14,7 +14,7 @@ public:
     double move();
 
 private:
-    ProjectileMotion* physics;
+    ProjectileMotion *physics;
     int velocity{0};
     int angle{0};
     int deltaT{50};

@@ -17,7 +17,7 @@ public:
     ~StartScreen();
 
 private:
-    void paintEvent(QPaintEvent* event);
+    void paintEvent(QPaintEvent *event);
     QPixmap startScreen{QPixmap(":/myicons/startscreen.png")};
     Ui::StartScreen *ui;
 

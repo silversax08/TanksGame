@@ -4,9 +4,9 @@
 
 WinnerScreen::WinnerScreen(QWidget *parent, int winningTank) :
     QWidget(parent),
-    ui3(new Ui::WinnerScreen)
+    ui(new Ui::WinnerScreen)
 {
-    ui3->setupUi(this);
+    ui->setupUi(this);
     if(winningTank == 1)
         winner = QPixmap(":/myicons/Player12.png");
     else
@@ -15,7 +15,7 @@ WinnerScreen::WinnerScreen(QWidget *parent, int winningTank) :
 
 WinnerScreen::~WinnerScreen()
 {
-    delete ui3;
+    delete ui;
 }
 
 void WinnerScreen::paintEvent(QPaintEvent *event)

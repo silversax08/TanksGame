@@ -23,8 +23,8 @@ signals:
     void playButton_clicked();
 
 private:
-    void paintEvent(QPaintEvent* event);
-    Ui::WinnerScreen *ui3;
+    void paintEvent(QPaintEvent *event);
+    Ui::WinnerScreen *ui;
     QPixmap winner;
 };
 
