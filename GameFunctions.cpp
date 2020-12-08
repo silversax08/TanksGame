@@ -1,9 +1,9 @@
 #include "GameFunctions.h"
 
-std::array<int,2> GameFunctions::add_bullet_position_componants_together(int angle, std::array<int,2> tankPosition)
+std::array<double,2> GameFunctions::add_bullet_position_componants_together(int angle, std::array<int,2> tankPosition)
 {
     int imageHalfSize{60};
-    std::array<int,2> position;
+    std::array<double,2> position;
     std::array<int,2> correction{GameFunctions::calculate_correction_position(angle)};
     position[0] = tankPosition[0] + imageHalfSize + correction[0];
     position[1] = tankPosition[1] + imageHalfSize - correction[1];

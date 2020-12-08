@@ -4,7 +4,7 @@
 void test_add_bullet_componants_together(int angle,std::array<int,2> position, std::array<int,2> compare)
 {
 
-    std::array<int,2> newPosition{GameFunctions::add_bullet_position_componants_together(angle,position)};
+    std::array<double,2> newPosition{GameFunctions::add_bullet_position_componants_together(angle,position)};
     int tolerance{1};
     EXPECT_NEAR(compare[0],newPosition[0],tolerance);
     EXPECT_NEAR(compare[1],newPosition[1],tolerance);

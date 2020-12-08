@@ -2,23 +2,13 @@
 #include "ProjectileMotion.hpp"
 
 
-Bullet::Bullet(std::array<int,2> inputPosition, int inputVelocity, int inputAngle)
+Bullet::Bullet(std::array<double,2> inputPosition, int inputVelocity, int inputAngle)
 {
-    position[0] = inputPosition[0];
-    position[1] = inputPosition[1];
-    velocity = inputVelocity;
-    angle = inputAngle;
-
-    physics = new ProjectileMotion(velocity,angle,position);
+    physics = new ProjectileMotion(inputVelocity, inputAngle, inputPosition);
 
     QGraphicsRectItem* bullet = new QGraphicsRectItem;
     bullet->setRect(position[0],position[1],10,10);
     setPos(position[0],position[1]);
-}
-
-double Bullet::get_vertical_position()
-{
-    return position[1];
 }
 
 double Bullet::move()
