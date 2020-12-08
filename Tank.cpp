@@ -16,10 +16,11 @@ std::array<int,2> Tank::get_position()
 
 void Tank::move_tank(std::string direction)
 {
+    int stepSize{10};
     if(direction=="Left")
-        xPos = xPos - 10;
+        xPos = xPos - stepSize;
     else
-        xPos = xPos + 10;
+        xPos = xPos + stepSize;
     setPos(xPos,yPos);
 }
 
