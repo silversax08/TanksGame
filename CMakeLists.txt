@@ -59,6 +59,10 @@ add_executable(${PROJECT_NAME}
     winnerscreen.ui
     Ground.h
     Ground.cpp
+    Barrel.h
+    Barrel.cpp
+    Tank.h
+    Tank.cpp
     ${MYRESOURCES}
 )
 
