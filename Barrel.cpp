@@ -9,13 +9,10 @@ Barrel::Barrel(int inputXPos, int inputYPos)
     setTransformOriginPoint(0,0);
 }
 
-void Barrel::move_barrel(std::string direction)
+void Barrel::move_barrel(int newXPos, int newYPos)
 {
-    int stepSize{10};
-    if(direction=="Left")
-        xPos = xPos - stepSize;
-    else
-        xPos = xPos + stepSize;
+    xPos = newXPos;
+    yPos = newYPos;
     setPos(xPos,yPos);
 }
 

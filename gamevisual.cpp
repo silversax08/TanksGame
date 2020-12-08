@@ -40,9 +40,9 @@ void GameVisual::rotate_barrel()
 void GameVisual::set_turn_text()
 {
     if(playerNumber==1)
-        ui->label->setText("Turn: Left Tank");
+        ui->label->setText("Player: Left Tank");
     else
-        ui->label->setText("Turn: Right Tank");
+        ui->label->setText("Player: Right Tank");
 }
 
 void GameVisual::move_tank(std::string direction)

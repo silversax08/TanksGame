@@ -15,12 +15,12 @@ class Game : public QObject
     Q_OBJECT
 public:
     Game(QGraphicsScene* inputScene);
-    void move_tank(std::string direction, int idNumber);
-    void rotate_barrel(int angle, int idNumber);
+    void move_tank(std::string direction, int playerNumber);
+    void rotate_barrel(int angle, int playerNumber);
     void tank_fire(int velocity,int angle, int playerNumber);
 
 private:
-    std::array<int,2> calculate_bullet_position(int angle, int tankNumber);
+    std::array<int,2> calculate_bullet_position(int angle, int playerNumber);
     int calculate_tank_rotation_angle(int xPos);
     void initialize_tanks();
     double find_tank_vertical_position(int xPoint);
@@ -33,8 +33,6 @@ private:
     BarrelL *barrel;
     BarrelR *barrel2;
     Ground *ground{new Ground};
-    int deltaT{50};
-    int oneMove{10};
     int xPositionCorrection{50};
     QTimer* timer{new QTimer()};
 
